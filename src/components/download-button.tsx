@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { storeUrlForDevice } from "@/lib/store-url";
 
 // Phones go straight to their store; desktops (or a store without a URL yet) scroll to #download.
@@ -18,7 +19,8 @@ export function DownloadButton({ className = "" }: { className?: string }) {
       onClick={onClick}
       className={`inline-flex h-14 items-center justify-center rounded-[10px] bg-green px-7 text-[19px] font-semibold text-white transition-colors hover:bg-[#317339] ${className}`}
     >
-      Download dscpln →
+      Download dscpln
+      <ArrowRight size={20} className="ml-2" aria-hidden="true" />
     </Link>
   );
 }
