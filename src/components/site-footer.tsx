@@ -22,12 +22,12 @@ function FooterLinks({ title, links }: { title: string; links: { label: string; 
 
 export function SiteFooter() {
   return (
-    <footer className="bg-footer pt-24 pb-12">
+    <footer className="border-t border-[rgba(31,31,29,0.14)] bg-footer pt-20 pb-12">
       <div className="wrap">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
           <div>
             <Wordmark height={40} />
-            <p className="mt-5 max-w-[360px] text-[17px] text-ink">Lines that push you. Every day.</p>
+            <p className="mt-5 max-w-[360px] text-[17px] text-ink">Keep the promises you make to yourself.</p>
           </div>
 
           <FooterLinks title="Product" links={productNav} />
@@ -40,7 +40,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-14 border-t border-border pt-6 text-[14px] text-muted">
-          © 2026 dscpln · TechLoops · Clermont-Ferrand, France
+          © 2026 dscpln, operated by TechLoops, Clermont-Ferrand, France
         </div>
       </div>
     </footer>

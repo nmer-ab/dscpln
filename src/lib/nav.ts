@@ -1,13 +1,15 @@
 export const mainNav = [
-  { label: "Home", href: "/" },
   { label: "Features", href: "/#features" },
   { label: "How it works", href: "/#how-it-works" },
+  { label: "Widgets", href: "/#widgets" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
 ];
 
 export const productNav = [
   { label: "Features", href: "/#features" },
   { label: "How it works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
 ];
 
