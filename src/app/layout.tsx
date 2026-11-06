@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     icon: { url: "/favicon.svg", type: "image/svg+xml" },
     apple: "/apple-touch-icon.png",
   },
+  // Safari's Smart App Banner: <meta name="apple-itunes-app" content="app-id=…"> on every page.
+  itunes: { appId: "6827655519" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

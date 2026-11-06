@@ -4,6 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Page not found",
+  description: "This page doesn't exist. Head back to dscpln.app to find habits, streaks and Milo, your coach.",
 };
 
 export default function NotFound() {

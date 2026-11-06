@@ -7,7 +7,8 @@ import { StoreRedirect } from "./store-redirect";
 const description = "Download dscpln on the App Store or Google Play.";
 
 export const metadata: Metadata = {
-  title: "Get dscpln",
+  // absolute: the "%s · dscpln" template would give "Get dscpln · dscpln".
+  title: { absolute: "Get dscpln" },
   description,
   alternates: { canonical: "/get" },
   openGraph: { title: "Get dscpln", description, url: "/get", images: "/og.png" },
