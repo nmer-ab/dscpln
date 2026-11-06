@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BASE, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/get`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/best-discipline-apps`, changeFrequency: "monthly", priority: 0.7 },
     ...docSlugs.map((slug) => ({
       url: `${BASE}/${slug}`,
       changeFrequency: "monthly" as const,

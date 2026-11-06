@@ -11,6 +11,7 @@ export const productNav = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
+  { label: "Guides", href: "/best-discipline-apps" },
 ];
 
 export const legalNav = [
