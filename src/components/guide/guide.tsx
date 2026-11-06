@@ -84,12 +84,17 @@ export function Guide({ faqs, children }: { faqs: GuideFaqItem[]; children: Reac
   );
 }
 
-export function GuideHead({ title, intro, disclosure = true }: { title: ReactNode; intro: string[]; disclosure?: boolean }) {
+export function GuideHead({ title, intro, disclosure = true, eyebrow = "Guide" }: {
+  title: ReactNode;
+  intro: string[];
+  disclosure?: boolean;
+  eyebrow?: string;
+}) {
   return (
     <header className="g-head">
       <div className="lp-wrap">
         <div className="g-col">
-          <span className="eyebrow">Guide</span>
+          <span className="eyebrow">{eyebrow}</span>
           <h1>{title}</h1>
           {intro.map((p) => <p key={p.slice(0, 24)} className="lede">{p}</p>)}
           {disclosure && <p className="disclose"><b>Disclosure</b> We make dscpln.</p>}
@@ -149,7 +154,7 @@ export function GuideAppSections({ apps }: { apps: GuideApp[] }) {
 }
 
 // Every guide. Each page lists the others under "More guides"; add new guides here.
-const guides = [
+const guides: { href: string; title: string; text: string; tag?: string }[] = [
   {
     href: "/best-discipline-apps",
     title: "Best discipline apps in 2026",
@@ -175,6 +180,12 @@ const guides = [
     title: "The 30-day discipline challenge",
     text: "One small rule a week for four weeks, with a printable checklist to keep you honest.",
   },
+  {
+    href: "/discipline-quote-generator",
+    title: "Discipline quote generator",
+    text: "60 original short lines on discipline and motivation. Copy one or save it for your Stories.",
+    tag: "Free tool",
+  },
 ];
 
 /** Cross-links to the other guides. `current` is this page's path. */
@@ -190,6 +201,7 @@ export function GuideMore({ current }: { current: string }) {
               .map((g) => (
                 <li key={g.href}>
                   <Link href={g.href} className="g-more-card">
+                    {g.tag && <span className="g-more-tag">{g.tag}</span>}
                     <b>{g.title}</b>
                     <span className="g-more-text">{g.text}</span>
                   </Link>

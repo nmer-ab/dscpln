@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/habitica-alternatives`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/how-to-build-self-discipline`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/30-day-discipline-challenge`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/discipline-quote-generator`, changeFrequency: "monthly", priority: 0.7 },
     ...docSlugs.map((slug) => ({
       url: `${BASE}/${slug}`,
       changeFrequency: "monthly" as const,
