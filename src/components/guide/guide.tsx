@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- static line-art SVGs, sized by CSS (same as the home page) */
-// Shared building blocks for the comparison guides (/best-discipline-apps, /fabulous-alternatives).
+// Shared data and blocks for the guides: the guide list (with each article's cover and related articles), JSON-LD helpers,
+// and the pieces the index pages use (/guides, /quotes, /quotes/[slug]). The guide pages themselves use article.tsx.
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { APP_STORE_URL } from "@/config/links";
@@ -68,9 +69,9 @@ export function articleJsonLd({ path, title, description, published, modified = 
   };
 }
 
-/** Page shell: the .lp scope from the home page plus, when the page has FAQs, the FAQPage JSON-LD. */
-export function Guide({ faqs = [], children }: { faqs?: GuideFaqItem[]; children: ReactNode }) {
-  const faqJsonLd = {
+/** FAQPage structured data for a page's FAQ. */
+export function faqJsonLd(faqs: GuideFaqItem[]) {
+  return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((f) => ({
@@ -79,10 +80,13 @@ export function Guide({ faqs = [], children }: { faqs?: GuideFaqItem[]; children
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
+}
 
+/** Page shell for the index pages (/guides, /quotes and the quote categories): the .lp scope plus FAQPage JSON-LD when there are FAQs. */
+export function Guide({ faqs = [], children }: { faqs?: GuideFaqItem[]; children: ReactNode }) {
   return (
     <div className="lp guide">
-      {faqs.length > 0 && <JsonLd data={faqJsonLd} />}
+      {faqs.length > 0 && <JsonLd data={faqJsonLd(faqs)} />}
       {children}
     </div>
   );
@@ -108,104 +112,110 @@ export function GuideHead({ title, intro, disclosure = true, eyebrow = "Guide" }
   );
 }
 
-export function GuideTable({ apps, heading }: { apps: GuideApp[]; heading: string }) {
-  const sizes = apps.some((a) => a.widgetSizes);
-  return (
-    <section id="at-a-glance">
-      <div className="lp-wrap">
-        <div className="g-col">
-          <span className="eyebrow">At a glance</span>
-          <h2>{heading}</h2>
-        </div>
-        <div className="g-table" role="region" aria-label="Comparison table" tabIndex={0}>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">App</th>
-                <th scope="col">Best for</th>
-                {sizes && <th scope="col">Widget sizes</th>}
-                <th scope="col">Platforms</th>
-              </tr>
-            </thead>
-            <tbody>
-              {apps.map((app) => (
-                <tr key={app.id}>
-                  <th scope="row"><a href={`#${app.id}`}>{app.name}</a></th>
-                  <td>{app.bestFor}</td>
-                  {sizes && <td>{app.widgetSizes}</td>}
-                  <td>{app.platforms}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  );
-}
+export type CoverColor = "lime" | "ink" | "olive" | "sand";
+/** A file in /public/milo-v3/, without "milo-" and ".svg". */
+export type MiloPose = "cheer" | "clipboard" | "flex" | "idle" | "think" | "wave";
+/** An article cover, drawn in code (see cover.tsx). `circle` adds a soft circle, `line` a small white line card. */
+export type CoverSpec = { color: CoverColor; pose: MiloPose; circle?: boolean; line?: string };
 
-export function GuideAppSections({ apps }: { apps: GuideApp[] }) {
-  return apps.map((app, i) => (
-    <section key={app.id} id={app.id} className="g-app">
-      <div className="lp-wrap">
-        <div className="g-col">
-          <div className="g-app-head">
-            <span className={`g-rank${i === 0 ? " first" : ""}`} aria-hidden="true">{i + 1}</span>
-            <h2>{app.name}</h2>
-          </div>
-          {app.about.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
-          <dl className="g-facts">
-            {app.widget && <div><dt>The widget</dt><dd>{app.widget}</dd></div>}
-            <div><dt>Best for</dt><dd>{app.bestForLong}</dd></div>
-            <div><dt>Limitation</dt><dd>{app.limitation}</dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
-  ));
-}
+export type GuideLink = {
+  href: string;
+  title: string;
+  text: string;
+  tag?: string;
+  /** Shown as the tag and in the breadcrumb. */
+  category: string;
+  /** ISO date. */
+  published: string;
+  /** About 230 words a minute over the article body; update it when the text changes a lot. */
+  readMinutes: number;
+  cover: CoverSpec;
+  /** Three paths for "Related articles", from this list or the quote pages. */
+  related?: [string, string, string];
+};
 
-export type GuideLink = { href: string; title: string; text: string; tag?: string };
-
-// Every guide. Each page lists the others under "More guides"; add new guides here.
+// Every guide, with its cover and related articles. /guides lists them all; add new guides here.
 export const guides: GuideLink[] = [
   {
     href: "/best-discipline-apps",
     title: "Best discipline apps in 2026",
     text: "A wider comparison of discipline and habit apps, from coaches and games to simple trackers.",
+    category: "Comparison",
+    published: "2026-11-06",
+    readMinutes: 7,
+    cover: { color: "sand", pose: "cheer", line: "Start small. Start now." },
+    related: ["/fabulous-alternatives", "/habitica-alternatives", "/how-to-build-self-discipline"],
   },
   {
     href: "/fabulous-alternatives",
     title: "Best Fabulous alternatives in 2026",
     text: "Like the idea of Fabulous but want something simpler, more direct or widget-first? Here are the options.",
+    category: "Comparison",
+    published: "2026-11-06",
+    readMinutes: 5,
+    cover: { color: "olive", pose: "clipboard", circle: true },
+    related: ["/habitica-alternatives", "/best-discipline-apps", "/best-motivation-widgets-iphone"],
   },
   {
     href: "/habitica-alternatives",
     title: "Best Habitica alternatives in 2026",
     text: "Want less game, a calmer or more direct tone, or progress on your Home Screen? Here are the options.",
+    category: "Comparison",
+    published: "2026-11-06",
+    readMinutes: 5,
+    cover: { color: "lime", pose: "idle", line: "Small steps. No speeches." },
+    related: ["/fabulous-alternatives", "/best-discipline-apps", "/30-day-discipline-challenge"],
   },
   {
     href: "/how-to-build-self-discipline",
     title: "How to build self-discipline: 7 steps that work",
     text: "Practical steps for the days motivation doesn't show up, from starting small to never missing twice.",
+    category: "Discipline",
+    published: "2026-11-06",
+    readMinutes: 8,
+    cover: { color: "lime", pose: "flex", circle: true, line: "One rep. Then decide." },
+    related: ["/30-day-discipline-challenge", "/best-discipline-apps", "/quotes/stoic"],
   },
   {
     href: "/30-day-discipline-challenge",
     title: "The 30-day discipline challenge",
     text: "One small rule a week for four weeks, with a printable checklist to keep you honest.",
+    category: "Guide",
+    published: "2026-11-06",
+    readMinutes: 6,
+    cover: { color: "ink", pose: "think", circle: true },
+    related: ["/how-to-build-self-discipline", "/quotes/discipline", "/best-discipline-apps"],
   },
   {
     href: "/discipline-quote-generator",
     title: "Discipline quote generator",
     text: "60 original short lines on discipline and motivation. Copy one or save it for your Stories.",
     tag: "Free tool",
+    category: "Free tool",
+    published: "2026-11-06",
+    readMinutes: 2,
+    cover: { color: "sand", pose: "wave", line: "Feelings are opinions, not instructions." },
+    related: ["/quotes/discipline", "/quotes/motivation", "/best-motivation-widgets-iphone"],
   },
   {
     href: "/best-motivation-widgets-iphone",
     title: "Best motivation widgets for iPhone in 2026",
     text: "Quotes, affirmations, streaks or your own words: the widgets worth a spot on your Home Screen.",
+    category: "Comparison",
+    published: "2026-11-06",
+    readMinutes: 6,
+    cover: { color: "ink", pose: "cheer", circle: true },
+    related: ["/discipline-quote-generator", "/best-discipline-apps", "/quotes/motivation"],
   },
 ];
+
+const quoteCovers: Record<string, CoverSpec> = {
+  discipline: { color: "lime", pose: "flex", line: "Motivation is a guest. Discipline lives here." },
+  motivation: { color: "sand", pose: "cheer", line: "Small progress is still progress. Count it." },
+  stoic: { color: "olive", pose: "wave", circle: true },
+};
+
+const words = (texts: string[]) => texts.join(" ").split(/\s+/).filter(Boolean).length;
 
 // The quote pages, listed under a "Quotes" heading after the guides.
 export const quotePages: GuideLink[] = quoteCategories.map((c) => ({
@@ -213,10 +223,25 @@ export const quotePages: GuideLink[] = quoteCategories.map((c) => ({
   title: `${c.name} quotes`,
   text: c.summary,
   tag: `${c.lines.length} lines`,
+  category: "Quotes",
+  published: "2026-11-06",
+  readMinutes: Math.max(1, Math.ceil(words([...c.intro, ...c.lines]) / 230)),
+  cover: quoteCovers[c.slug],
 }));
 
+/** A guide or quote page by path. Fails the build if the path isn't listed. */
+export function getArticle(href: string) {
+  const article = [...guides, ...quotePages].find((g) => g.href === href);
+  if (!article) throw new Error(`Unknown guide: ${href}`);
+  return article;
+}
+
 /** A titled list of link cards (the "More guides" look). */
-export function GuideCards({ heading, items, className = "" }: { heading: string; items: GuideLink[]; className?: string }) {
+export function GuideCards({ heading, items, className = "" }: {
+  heading: string;
+  items: Pick<GuideLink, "href" | "title" | "text" | "tag">[];
+  className?: string;
+}) {
   return (
     <section className={`g-more ${className}`.trim()}>
       <div className="lp-wrap">
@@ -236,16 +261,6 @@ export function GuideCards({ heading, items, className = "" }: { heading: string
         </div>
       </div>
     </section>
-  );
-}
-
-/** Cross-links to the other guides, then the quote pages. `current` is this page's path. */
-export function GuideMore({ current }: { current: string }) {
-  return (
-    <>
-      <GuideCards heading="More guides" items={guides.filter((g) => g.href !== current)} />
-      <GuideCards heading="Quotes" items={quotePages} />
-    </>
   );
 }
 
@@ -280,46 +295,6 @@ export function GuideHomeScreen({ line, className = "" }: { line: string; classN
             {/* Official black badge; viewBox is 119.66 × 40 */}
             <img src="/badges/app-store.svg" alt="Download dscpln on the App Store" width={132} height={44} />
           </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function GuideFaq({ faqs }: { faqs: GuideFaqItem[] }) {
-  return (
-    <section className="faq" id="faq">
-      <div className="lp-wrap">
-        <div><span className="eyebrow">FAQ</span><h2>Questions, answered.</h2></div>
-        <div>
-          {faqs.map((f) => (
-            <details key={f.q}>
-              <summary>{f.q}<span className="pm" aria-hidden="true" /></summary>
-              <p>{f.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function GuideCta({ heading, text }: { heading: string; text: string }) {
-  return (
-    <section className="cta-band" id="download">
-      <div className="lp-wrap">
-        <div className="cta-box">
-          <div>
-            <h2>{heading}</h2>
-            <p className="lede">{text}</p>
-            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="g-badge">
-              {/* Official black badge; viewBox is 119.66 × 40 */}
-              <img src="/badges/app-store.svg" alt="Download dscpln on the App Store" width={132} height={44} />
-            </a>
-          </div>
-          <div className="cta-side">
-            <div className="cta-milo"><img src="/milo-v3/milo-wave.svg" alt="" width={188} height={292} /></div>
-          </div>
         </div>
       </div>
     </section>

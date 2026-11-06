@@ -27,18 +27,6 @@
 .lp.guide tbody td { color: var(--lp-muted); }
 .lp.guide tbody tr:first-child { background: rgba(200, 226, 106, 0.18); }
 
-/* one section per app */
-.lp.guide .g-app .g-col { border-top: 1px solid var(--lp-hair); padding-top: 40px; }
-.lp.guide .g-app-head { display: flex; align-items: center; gap: 16px; }
-.lp.guide .g-app h2 { font-size: clamp(28px, 3.4vw, 36px); }
-.lp.guide .g-rank { flex: none; width: 40px; height: 40px; border-radius: 20px; background: var(--lp-card); border: 1.5px solid var(--lp-ink); display: flex; align-items: center; justify-content: center; font: 600 17px var(--lp-serif); }
-.lp.guide .g-rank.first { background: var(--lp-lime); }
-.lp.guide .g-app p { margin: 16px 0 0; font-size: 17px; line-height: 1.65; }
-.lp.guide .g-facts { margin: 24px 0 0; display: flex; flex-direction: column; gap: 10px; }
-.lp.guide .g-facts div { display: grid; grid-template-columns: 120px 1fr; gap: 14px; padding: 16px 18px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 14px; }
-.lp.guide .g-facts dt { padding-top: 3px; font: 600 11.5px var(--lp-sans); letter-spacing: 1.4px; text-transform: uppercase; color: var(--lp-olive); }
-.lp.guide .g-facts dd { margin: 0; font-size: 15.5px; }
-
 /* more guides */
 .lp.guide .g-more-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .lp.guide .g-more-card { display: flex; flex-direction: column; gap: 6px; padding: 22px 24px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 18px; color: var(--lp-ink); text-decoration: none; transition: border-color 0.2s; }
@@ -47,22 +35,16 @@
 .lp.guide .g-more-card b { font: 600 22px/1.25 var(--lp-serif); letter-spacing: -0.2px; text-decoration: underline; text-decoration-color: var(--lp-lime); text-decoration-thickness: 3px; text-underline-offset: 4px; }
 .lp.guide .g-more-text { color: var(--lp-muted); font-size: 15.5px; }
 
-/* faq + closing cta */
-.lp.guide .faq { padding-top: 88px; }
-.lp.guide .cta-band { padding-block: 64px 96px; }
+/* App Store badge (GuideHomeScreen) */
 .lp.guide .g-badge { display: inline-block; margin-top: 28px; }
 .lp.guide .g-badge img { display: block; height: 44px; width: auto; }
 
 @media (max-width: 880px) {
   .lp.guide section { padding-block: 48px 0; }
   .lp.guide .g-head { padding-top: 40px; }
-  .lp.guide .faq { padding-top: 64px; }
-  .lp.guide .cta-band { padding-block: 48px 64px; }
-  .lp.guide .g-facts div { grid-template-columns: 1fr; gap: 6px; }
 }
 
 /* printable checklist (/30-day-discipline-challenge) */
-.lp.guide .g-week-head { margin-top: 10px; }
 .lp.guide .g-weeks { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; font-size: 14.5px; }
 .lp.guide .g-weeks li { display: flex; gap: 10px; align-items: baseline; }
 .lp.guide .g-weeks b { flex: none; font: 600 11px var(--lp-sans); letter-spacing: 1.2px; text-transform: uppercase; color: var(--lp-olive); min-width: 74px; }
@@ -97,8 +79,13 @@
   html:has(.g-print) body { height: auto; min-height: 0; background: #fff; }
   body:has(.g-print) > header,
   body:has(.g-print) > footer,
-  .lp.guide:has(.g-print) > :not(.g-print),
+  .lp.guide.ar:has(.g-print) .ar-wrap > :not(article),
+  .lp.guide.ar:has(.g-print) article > :not(.ar-body),
+  .lp.guide.ar:has(.g-print) .ar-body > :not(.ar-main),
+  .lp.guide.ar:has(.g-print) .ar-main > :not(.g-print),
   .lp.guide .g-print .g-print-actions { display: none !important; }
+  .lp.guide.ar:has(.g-print) .ar-wrap { padding: 0; max-width: none; }
+  .lp.guide.ar:has(.g-print) .ar-body { display: block; margin: 0; }
   .lp.guide:has(.g-print) { background: #fff; }
   .lp.guide .g-print { padding: 0; }
   .lp.guide .g-print .lp-wrap { padding: 0; max-width: none; }
@@ -143,14 +130,12 @@
 .lp.guide .qg-note { margin: 18px 0 0; font-size: 14.5px; color: var(--lp-muted); }
 .lp.guide .qg-home h2 { margin-top: 10px; }
 .lp.guide .qg-wall { max-width: 440px; margin-top: 28px; }
-.lp.guide .faq:last-child { padding-bottom: 96px; }
 
 @media (max-width: 880px) {
   .lp.guide .qg-card { min-height: 360px; padding: 26px; border-radius: 20px; }
   .lp.guide .qg-actions .g-print-btn,
   .lp.guide .qg-actions .qg-btn { flex: 1 1 auto; }
   .lp.guide .qg-status { flex-basis: 100%; }
-  .lp.guide .faq:last-child { padding-bottom: 64px; }
 }
 
 /* how-to steps box (/best-motivation-widgets-iphone) */

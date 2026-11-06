@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Guide, GuideFaq, GuideHead, GuideHomeScreen, GuideMore, JsonLd } from "@/components/guide/guide";
+import { Article } from "@/components/guide/article";
+import { GuideHomeScreen } from "@/components/guide/guide";
 import { QuoteGenerator } from "@/components/guide/quote-generator";
 
 const path = "/discipline-quote-generator";
@@ -45,30 +46,25 @@ const faqs = [
 
 export default function QuoteGeneratorPage() {
   return (
-    <Guide faqs={faqs}>
-      <JsonLd data={webAppJsonLd} />
-      <GuideHead
-        eyebrow="Free tool"
-        title={<>Discipline <em>quote</em> generator</>}
-        disclosure={false}
-        intro={[
-          "Sixty short, original lines for the days you need a push. Pick a category, tap New line until one fits, then copy it or save it as an image for your Stories.",
-        ]}
-      />
-
-      <section id="generator" className="g-tool">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <QuoteGenerator />
-            <p className="qg-note">No sign-up, no tracking. Lines won&apos;t repeat until you&apos;ve seen every one in the category.</p>
-          </div>
-        </div>
+    <Article
+      path={path}
+      title={title}
+      faqs={faqs}
+      jsonLd={webAppJsonLd}
+      toc={[
+        { id: "generator", label: "The generator" },
+        { id: "home-screen", label: "Get a new line every morning on your Home Screen" },
+      ]}
+      intro={[
+        "Sixty short, original lines for the days you need a push. Pick a category, tap New line until one fits, then copy it or save it as an image for your Stories.",
+      ]}
+    >
+      <section id="generator" className="ar-sec g-tool">
+        <QuoteGenerator />
+        <p className="qg-note">No sign-up, no tracking. Lines won&apos;t repeat until you&apos;ve seen every one in the category.</p>
       </section>
 
       <GuideHomeScreen line="Keep the promise while it's still small enough to keep." />
-
-      <GuideMore current={path} />
-      <GuideFaq faqs={faqs} />
-    </Guide>
+    </Article>
   );
 }

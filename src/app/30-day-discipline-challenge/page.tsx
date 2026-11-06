@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { articleJsonLd, Guide, GuideCta, GuideFaq, GuideHead, GuideMore, JsonLd } from "@/components/guide/guide";
+import { Article, ArticleNotes, ArticleSection } from "@/components/guide/article";
+import { articleJsonLd } from "@/components/guide/guide";
 import { PrintButton } from "@/components/guide/print-button";
 
 const path = "/30-day-discipline-challenge";
@@ -100,97 +101,76 @@ const faqs = [
 
 export default function ThirtyDayChallenge() {
   return (
-    <Guide faqs={faqs}>
-      <JsonLd data={articleJsonLd({ path, title, description, published: "2026-11-06" })} />
-      <GuideHead
-        title={<>The <em>30-day</em> discipline challenge</>}
-        disclosure={false}
-        intro={[
-          "Big resolutions tend to collapse under their own weight. This challenge goes the other way: it starts with something almost too easy and adds one small rule each week.",
-          "Here's how it works. Each week brings one new rule, and you keep the rules from the weeks before. By day 30, you have a short morning routine that runs on its own: a steady wake-up time, a made bed, some movement, a calm start without your phone and a few minutes to read or plan.",
-          "The first three weeks last seven days each, and week four runs through day 30. Print the checklist below, put it somewhere you'll see it, and tick a box each day you keep all of that week's rules.",
-        ]}
-      />
-
-      {weeks.map((week, i) => (
-        <section key={week.id} id={week.id} className="g-app">
-          <div className="lp-wrap">
-            <div className="g-col">
-              <span className="eyebrow">{week.days}</span>
-              <div className="g-app-head g-week-head">
-                <span className={`g-rank${i === 0 ? " first" : ""}`} aria-hidden="true">{i + 1}</span>
-                <h2>{week.title}</h2>
-              </div>
-              {week.body.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
-              <dl className="g-facts">
-                <div><dt>Daily rules</dt><dd>{week.rules}</dd></div>
-                <div><dt>Tip</dt><dd>{week.tip}</dd></div>
-              </dl>
-            </div>
-          </div>
-        </section>
+    <Article
+      path={path}
+      title={title}
+      faqs={faqs}
+      jsonLd={articleJsonLd({ path, title, description, published: "2026-11-06" })}
+      toc={[
+        ...weeks.map((week) => ({ id: week.id, label: week.title })),
+        { id: "checklist", label: "Your 30-day checklist" },
+        { id: "if-you-miss-a-day", label: "What to do if you miss a day" },
+      ]}
+      intro={[
+        "Big resolutions tend to collapse under their own weight. This challenge goes the other way: it starts with something almost too easy and adds one small rule each week.",
+        "Here's how it works. Each week brings one new rule, and you keep the rules from the weeks before. By day 30, you have a short morning routine that runs on its own: a steady wake-up time, a made bed, some movement, a calm start without your phone and a few minutes to read or plan.",
+        "The first three weeks last seven days each, and week four runs through day 30. Print the checklist below, put it somewhere you'll see it, and tick a box each day you keep all of that week's rules.",
+      ]}
+    >
+      {weeks.map((week) => (
+        <ArticleSection key={week.id} id={week.id} eyebrow={week.days} title={week.title}>
+          {week.body.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+          <ArticleNotes notes={[{ label: "Daily rules", text: week.rules }, { label: "Tip", text: week.tip }]} />
+        </ArticleSection>
       ))}
 
-      <section id="checklist" className="g-print">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <span className="eyebrow">Printable</span>
-            <h2>Your 30-day checklist</h2>
-            <p className="lede">Tick a box each day you keep all of that week&apos;s rules. Put it on your fridge, your mirror or next to your bed.</p>
-            <ol className="g-weeks">
-              {legend.map((w) => <li key={w.days}><b>{w.days}</b><span>{w.text}</span></li>)}
-            </ol>
-            <p className="g-start">Start date: <span aria-hidden="true" /></p>
-            <ol className="g-checklist">
-              {Array.from({ length: 30 }, (_, i) => {
-                const day = i + 1;
-                const week = weekOf(day);
-                return (
-                  <li key={day} className={`g-day w${week}`}>
-                    <label>
-                      <input type="checkbox" aria-label={`Day ${day}`} />
-                      <span className="g-day-num" aria-hidden="true">Day {day}</span>
-                      <span className="g-day-week" aria-hidden="true">Week {week}</span>
-                    </label>
-                  </li>
-                );
-              })}
-            </ol>
-            <div className="g-print-actions">
-              <PrintButton label="Print the checklist" />
-              <p>Rather keep it on your phone? dscpln, the app we make, tracks your streak and nudges you each day.</p>
-            </div>
+      {/* The .g-col wrapper is what the print styles size to one A4/Letter page. */}
+      <section id="checklist" className="ar-sec g-print">
+        <div className="g-col">
+          <span className="eyebrow">Printable</span>
+          <h2>Your 30-day checklist</h2>
+          <p className="lede">Tick a box each day you keep all of that week&apos;s rules. Put it on your fridge, your mirror or next to your bed.</p>
+          <ol className="g-weeks">
+            {legend.map((w) => <li key={w.days}><b>{w.days}</b><span>{w.text}</span></li>)}
+          </ol>
+          <p className="g-start">Start date: <span aria-hidden="true" /></p>
+          <ol className="g-checklist">
+            {Array.from({ length: 30 }, (_, i) => {
+              const day = i + 1;
+              const week = weekOf(day);
+              return (
+                <li key={day} className={`g-day w${week}`}>
+                  <label>
+                    <input type="checkbox" aria-label={`Day ${day}`} />
+                    <span className="g-day-num" aria-hidden="true">Day {day}</span>
+                    <span className="g-day-week" aria-hidden="true">Week {week}</span>
+                  </label>
+                </li>
+              );
+            })}
+          </ol>
+          <div className="g-print-actions">
+            <PrintButton label="Print the checklist" />
+            <p>Rather keep it on your phone? dscpln, the app we make, tracks your streak and nudges you each day.</p>
           </div>
         </div>
       </section>
 
-      <section id="if-you-miss-a-day" className="g-plain">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <h2>What to do if you miss a day</h2>
-            <p>You&apos;ll probably miss a day at some point. That doesn&apos;t end the challenge.</p>
-            <p>
-              Leave the box empty and keep going. Don&apos;t restart from day one, and don&apos;t try to make up for it by doubling tomorrow&apos;s rules. An empty box is honest, and an honest checklist is more useful than a perfect one.
-            </p>
-            <p>
-              The rule that matters most is simple: never miss twice in a row. One missed day is a blip. Two in a row is how old habits find their way back.
-            </p>
-            <p>
-              It also helps to plan ahead for days you know will be hard, like an early flight or a late night out. Decide the evening before which rules you&apos;ll keep no matter what, even if it&apos;s only waking up on time and making your bed.
-            </p>
-            <p>
-              Then ask what got in the way. Did you go to bed too late? Was the new rule too big for your mornings? Change the setup, not your commitment, and pick up where you left off.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <GuideMore current={path} />
-      <GuideFaq faqs={faqs} />
-      <GuideCta
-        heading="Start with one habit tonight."
-        text="dscpln keeps your streak in sight and Milo one message away. The yearly plan starts with a free trial."
-      />
-    </Guide>
+      <ArticleSection id="if-you-miss-a-day" title="What to do if you miss a day">
+        <p>You&apos;ll probably miss a day at some point. That doesn&apos;t end the challenge.</p>
+        <p>
+          Leave the box empty and keep going. Don&apos;t restart from day one, and don&apos;t try to make up for it by doubling tomorrow&apos;s rules. An empty box is honest, and an honest checklist is more useful than a perfect one.
+        </p>
+        <p>
+          The rule that matters most is simple: never miss twice in a row. One missed day is a blip. Two in a row is how old habits find their way back.
+        </p>
+        <p>
+          It also helps to plan ahead for days you know will be hard, like an early flight or a late night out. Decide the evening before which rules you&apos;ll keep no matter what, even if it&apos;s only waking up on time and making your bed.
+        </p>
+        <p>
+          Then ask what got in the way. Did you go to bed too late? Was the new rule too big for your mornings? Change the setup, not your commitment, and pick up where you left off.
+        </p>
+      </ArticleSection>
+    </Article>
   );
 }

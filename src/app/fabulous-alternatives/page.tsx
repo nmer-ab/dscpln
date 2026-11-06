@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Guide, GuideAppSections, GuideCta, GuideFaq, GuideHead, GuideMore, GuideTable, type GuideApp } from "@/components/guide/guide";
+import { Article, ArticleApps, ArticleSection, ArticleTable, appsToc } from "@/components/guide/article";
+import type { GuideApp } from "@/components/guide/guide";
 
 const title = "Best Fabulous alternatives in 2026";
 const description =
@@ -102,35 +103,29 @@ const faqs = [
 
 export default function FabulousAlternatives() {
   return (
-    <Guide faqs={faqs}>
-      <GuideHead
-        title={<>Best Fabulous alternatives in <em>2026</em></>}
-        intro={[
-          "Fabulous is a popular habit app, and for many people it's the first one they try. Over time, some people find they want something different: a simpler app that tracks just a habit or two, a more direct push on the days they don't feel like it, or progress they can see on their Home Screen without opening an app.",
-          "That's less about Fabulous and more about what each person needs from a habit app. Here are the alternatives worth a look, depending on what you're after.",
-        ]}
-      />
+    <Article
+      path="/fabulous-alternatives"
+      title={title}
+      faqs={faqs}
+      disclosure
+      toc={[
+        { id: "what-fabulous-does-well", label: "What Fabulous does well" },
+        { id: "at-a-glance", label: "The alternatives, side by side" },
+        ...appsToc(apps),
+      ]}
+      intro={[
+        "Fabulous is a popular habit app, and for many people it's the first one they try. Over time, some people find they want something different: a simpler app that tracks just a habit or two, a more direct push on the days they don't feel like it, or progress they can see on their Home Screen without opening an app.",
+        "That's less about Fabulous and more about what each person needs from a habit app. Here are the alternatives worth a look, depending on what you're after.",
+      ]}
+    >
+      <ArticleSection id="what-fabulous-does-well" eyebrow={<>Credit where it&apos;s due</>} title="What Fabulous does well">
+        <p className="lede">
+          Fabulous is good at turning vague goals into a routine you can follow. Its guided journeys introduce small habits gradually and stack them into morning, afternoon and evening routines, with coaching content and audio sessions along the way. The design is warm and encouraging, and the approach draws on behavioral science, which makes it a solid place to start.
+        </p>
+      </ArticleSection>
 
-      <section id="what-fabulous-does-well">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <span className="eyebrow">Credit where it&apos;s due</span>
-            <h2>What Fabulous does well</h2>
-            <p className="lede">
-              Fabulous is good at turning vague goals into a routine you can follow. Its guided journeys introduce small habits gradually and stack them into morning, afternoon and evening routines, with coaching content and audio sessions along the way. The design is warm and encouraging, and the approach draws on behavioral science, which makes it a solid place to start.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <GuideTable apps={apps} heading="The alternatives, side by side" />
-      <GuideAppSections apps={apps} />
-      <GuideMore current="/fabulous-alternatives" />
-      <GuideFaq faqs={faqs} />
-      <GuideCta
-        heading="Start with one habit tonight."
-        text="dscpln keeps your streak in sight and Milo one message away. The yearly plan starts with a free trial."
-      />
-    </Guide>
+      <ArticleTable apps={apps} heading="The alternatives, side by side" />
+      <ArticleApps apps={apps} />
+    </Article>
   );
 }

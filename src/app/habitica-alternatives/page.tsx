@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Guide, GuideAppSections, GuideCta, GuideFaq, GuideHead, GuideMore, GuideTable, type GuideApp } from "@/components/guide/guide";
+import { Article, ArticleApps, ArticleSection, ArticleTable, appsToc } from "@/components/guide/article";
+import type { GuideApp } from "@/components/guide/guide";
 
 const title = "Best Habitica alternatives in 2026";
 const description =
@@ -102,35 +103,29 @@ const faqs = [
 
 export default function HabiticaAlternatives() {
   return (
-    <Guide faqs={faqs}>
-      <GuideHead
-        title={<>Best Habitica alternatives in <em>2026</em></>}
-        intro={[
-          "Habitica turns your habits into a role-playing game, and for a lot of people that's exactly what gets them moving. Over time, some people find they want something different: less game to manage, a calmer or more direct tone, or progress they can see on their Home Screen without opening an app.",
-          "That's less about Habitica and more about what each person needs from a habit app. Here are the alternatives worth a look, depending on what you're after.",
-        ]}
-      />
+    <Article
+      path="/habitica-alternatives"
+      title={title}
+      faqs={faqs}
+      disclosure
+      toc={[
+        { id: "what-habitica-does-well", label: "What Habitica does well" },
+        { id: "at-a-glance", label: "The alternatives, side by side" },
+        ...appsToc(apps),
+      ]}
+      intro={[
+        "Habitica turns your habits into a role-playing game, and for a lot of people that's exactly what gets them moving. Over time, some people find they want something different: less game to manage, a calmer or more direct tone, or progress they can see on their Home Screen without opening an app.",
+        "That's less about Habitica and more about what each person needs from a habit app. Here are the alternatives worth a look, depending on what you're after.",
+      ]}
+    >
+      <ArticleSection id="what-habitica-does-well" eyebrow={<>Credit where it&apos;s due</>} title="What Habitica does well">
+        <p className="lede">
+          Habitica is good at making habits fun. Its avatar, gold, gear and quests turn a plain checklist into a game with real stakes, and parties let friends hold each other accountable in a way few habit apps match. It&apos;s free to use, works on the web as well as on phones, and its code is open source.
+        </p>
+      </ArticleSection>
 
-      <section id="what-habitica-does-well">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <span className="eyebrow">Credit where it&apos;s due</span>
-            <h2>What Habitica does well</h2>
-            <p className="lede">
-              Habitica is good at making habits fun. Its avatar, gold, gear and quests turn a plain checklist into a game with real stakes, and parties let friends hold each other accountable in a way few habit apps match. It&apos;s free to use, works on the web as well as on phones, and its code is open source.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <GuideTable apps={apps} heading="The alternatives, side by side" />
-      <GuideAppSections apps={apps} />
-      <GuideMore current="/habitica-alternatives" />
-      <GuideFaq faqs={faqs} />
-      <GuideCta
-        heading="Start with one habit tonight."
-        text="dscpln keeps your streak in sight and Milo one message away. The yearly plan starts with a free trial."
-      />
-    </Guide>
+      <ArticleTable apps={apps} heading="The alternatives, side by side" />
+      <ArticleApps apps={apps} />
+    </Article>
   );
 }

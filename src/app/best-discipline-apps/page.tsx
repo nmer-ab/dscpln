@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Check, Guide, GuideAppSections, GuideCta, GuideFaq, GuideHead, GuideMore, GuideTable, type GuideApp } from "@/components/guide/guide";
+import { Article, ArticleApps, ArticleSection, ArticleTable, appsToc } from "@/components/guide/article";
+import { Check, type GuideApp } from "@/components/guide/guide";
 
 const title = "Best discipline apps in 2026";
 const description =
@@ -147,41 +148,35 @@ const faqs = [
 
 export default function BestDisciplineApps() {
   return (
-    <Guide faqs={faqs}>
-      <GuideHead
-        title={<>Best discipline apps in <em>2026</em></>}
-        intro={[
-          "Discipline isn't about willpower on your best day. It's about what you do on an ordinary Tuesday when you'd rather not. The right app makes that day a little easier: it reminds you, keeps score, and gives you a reason to show up.",
-          "We looked at the apps people mention most when they talk about building discipline, and wrote down what each one is good at, who it suits, and where it falls short.",
-        ]}
-      />
-
-      <section id="how-we-picked">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <span className="eyebrow">Method</span>
-            <h2>How we picked</h2>
-            <p className="lede">We judged every app on the same four things.</p>
-          </div>
-          <div className="feats">
-            {criteria.map((c) => (
-              <article key={c.title} className="feat">
-                <span className="tick"><Check /></span>
-                <div><h3>{c.title}</h3><p>{c.text}</p></div>
-              </article>
-            ))}
-          </div>
+    <Article
+      path="/best-discipline-apps"
+      title={title}
+      faqs={faqs}
+      disclosure
+      toc={[
+        { id: "how-we-picked", label: "How we picked" },
+        { id: "at-a-glance", label: "The apps, side by side" },
+        ...appsToc(apps),
+      ]}
+      intro={[
+        "Discipline isn't about willpower on your best day. It's about what you do on an ordinary Tuesday when you'd rather not. The right app makes that day a little easier: it reminds you, keeps score, and gives you a reason to show up.",
+        "We looked at the apps people mention most when they talk about building discipline, and wrote down what each one is good at, who it suits, and where it falls short.",
+      ]}
+    >
+      <ArticleSection id="how-we-picked" eyebrow="Method" title="How we picked">
+        <p className="lede">We judged every app on the same four things.</p>
+        <div className="feats">
+          {criteria.map((c) => (
+            <article key={c.title} className="feat">
+              <span className="tick"><Check /></span>
+              <div><h3>{c.title}</h3><p>{c.text}</p></div>
+            </article>
+          ))}
         </div>
-      </section>
+      </ArticleSection>
 
-      <GuideTable apps={apps} heading="The apps, side by side" />
-      <GuideAppSections apps={apps} />
-      <GuideMore current="/best-discipline-apps" />
-      <GuideFaq faqs={faqs} />
-      <GuideCta
-        heading="Start with one habit tonight."
-        text="dscpln keeps your streak in sight and Milo one message away. The yearly plan starts with a free trial."
-      />
-    </Guide>
+      <ArticleTable apps={apps} heading="The apps, side by side" />
+      <ArticleApps apps={apps} />
+    </Article>
   );
 }

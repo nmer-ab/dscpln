@@ -1,17 +1,9 @@
 /* eslint-disable @next/next/no-img-element -- static line-art SVGs, sized by CSS */
-import { Source_Serif_4 } from "next/font/google";
 import { QRCodeSVG } from "qrcode.react";
 import { MonoD } from "@/components/mono-d";
 import { StoreBadges } from "@/components/store-badges";
 import { APP_STORE_URL } from "@/config/links";
-
-// The hero's serif keeps its optical-size axis so large titles use the display cut, as in design/hero-demo.html.
-// Loaded here, not in the layout, so only the home page downloads it.
-const serifDisplay = Source_Serif_4({
-  variable: "--font-serif-display",
-  axes: ["opsz"],
-  subsets: ["latin"],
-});
+import { serifDisplay } from "@/lib/fonts";
 
 function Check({ size = 14 }: { size?: number }) {
   return (

@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  articleJsonLd,
-  Guide,
-  GuideAppSections,
-  GuideCta,
-  GuideFaq,
-  GuideHead,
-  GuideMore,
-  GuideTable,
-  JsonLd,
-  type GuideApp,
-} from "@/components/guide/guide";
+import { Article, ArticleApps, ArticleTable, appsToc } from "@/components/guide/article";
+import { articleJsonLd, type GuideApp } from "@/components/guide/guide";
 
 const path = "/best-motivation-widgets-iphone";
 const title = "Best motivation widgets for iPhone in 2026";
@@ -132,42 +122,38 @@ const steps = [
 
 export default function BestMotivationWidgets() {
   return (
-    <Guide faqs={faqs}>
-      <JsonLd data={articleJsonLd({ path, title, description, published: "2026-11-06" })} />
-      <GuideHead
-        title={<>Best motivation widgets for iPhone in <em>2026</em></>}
-        intro={[
-          "A motivation app only helps when you open it, and on the days you need it most, you won't. A Home Screen widget turns that around. The line, the streak or the reminder is already there every time you unlock your phone, with nothing to tap and no app to remember.",
-          <>
-            Here are the widgets worth a spot on your Home Screen, from daily quotes and affirmations to streak trackers and fully custom designs. Want to find a line you like first? Try our free{" "}
-            <Link href="/discipline-quote-generator">discipline quote generator</Link>.
-          </>,
-        ]}
-      />
-
-      <section id="how-to-add-a-widget">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <div className="g-steps">
-              <span className="eyebrow">Quick how-to</span>
-              <h2>How to add a widget on iPhone</h2>
-              <ol>
-                {steps.map((s) => <li key={s}>{s}</li>)}
-              </ol>
-              <p className="note">You can drag the widget anywhere on the Home Screen, or stack several widgets on top of each other and swipe between them.</p>
-            </div>
-          </div>
+    <Article
+      path={path}
+      title={title}
+      faqs={faqs}
+      jsonLd={articleJsonLd({ path, title, description, published: "2026-11-06" })}
+      disclosure
+      toc={[
+        { id: "how-to-add-a-widget", label: "How to add a widget on iPhone" },
+        { id: "at-a-glance", label: "The widgets, side by side" },
+        ...appsToc(apps),
+      ]}
+      intro={[
+        "A motivation app only helps when you open it, and on the days you need it most, you won't. A Home Screen widget turns that around. The line, the streak or the reminder is already there every time you unlock your phone, with nothing to tap and no app to remember.",
+        <>
+          Here are the widgets worth a spot on your Home Screen, from daily quotes and affirmations to streak trackers and fully custom designs. Want to find a line you like first? Try our free{" "}
+          <Link href="/discipline-quote-generator">discipline quote generator</Link>.
+        </>,
+      ]}
+    >
+      <section id="how-to-add-a-widget" className="ar-sec">
+        <div className="g-steps">
+          <span className="eyebrow">Quick how-to</span>
+          <h2>How to add a widget on iPhone</h2>
+          <ol>
+            {steps.map((s) => <li key={s}>{s}</li>)}
+          </ol>
+          <p className="note">You can drag the widget anywhere on the Home Screen, or stack several widgets on top of each other and swipe between them.</p>
         </div>
       </section>
 
-      <GuideTable apps={apps} heading="The widgets, side by side" />
-      <GuideAppSections apps={apps} />
-      <GuideMore current={path} />
-      <GuideFaq faqs={faqs} />
-      <GuideCta
-        heading="Put your streak on your Home Screen."
-        text="dscpln shows a fresh line and your streak every time you unlock your phone. The yearly plan starts with a free trial."
-      />
-    </Guide>
+      <ArticleTable apps={apps} heading="The widgets, side by side" />
+      <ArticleApps apps={apps} />
+    </Article>
   );
 }

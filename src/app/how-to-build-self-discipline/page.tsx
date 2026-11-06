@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { articleJsonLd, Guide, GuideCta, GuideFaq, GuideHead, GuideMore, JsonLd } from "@/components/guide/guide";
+import { Article, ArticleNotes, ArticleQuote, ArticleSection } from "@/components/guide/article";
+import { articleJsonLd } from "@/components/guide/guide";
 
 const path = "/how-to-build-self-discipline";
 const title = "How to build self-discipline: 7 steps that work";
@@ -134,43 +135,26 @@ const faqs = [
 
 export default function HowToBuildSelfDiscipline() {
   return (
-    <Guide faqs={faqs}>
-      <JsonLd data={articleJsonLd({ path, title, description, published: "2026-11-06" })} />
-      <GuideHead
-        title={<>How to build self-discipline: <em>7 steps</em> that work</>}
-        disclosure={false}
-        intro={[
-          "Motivation is a feeling, and feelings come and go. It shows up on a fresh Monday or after a good video, and it's often gone by Thursday.",
-          "That isn't a flaw in you. Motivation rises and falls with your sleep, your stress, your mood and plenty of other things you don't control. A plan that only works when you feel motivated is a plan that works some of the time.",
-          "Discipline is different. It isn't a feeling you wait for. It's a set of habits and decisions that keep working after the feeling has left.",
-          "The good news is that it isn't a personality trait you either have or don't. You build it the way you build anything: small, often and on purpose. These seven steps are designed for your ordinary days, and especially your bad ones.",
-        ]}
-      />
-
+    <Article
+      path={path}
+      title={title}
+      faqs={faqs}
+      jsonLd={articleJsonLd({ path, title, description, published: "2026-11-06" })}
+      toc={steps.map((step, i) => ({ id: step.id, label: `${i + 1}. ${step.title}` }))}
+      intro={[
+        "Motivation is a feeling, and feelings come and go. It shows up on a fresh Monday or after a good video, and it's often gone by Thursday.",
+        "That isn't a flaw in you. Motivation rises and falls with your sleep, your stress, your mood and plenty of other things you don't control. A plan that only works when you feel motivated is a plan that works some of the time.",
+        "Discipline is different. It isn't a feeling you wait for. It's a set of habits and decisions that keep working after the feeling has left.",
+        "The good news is that it isn't a personality trait you either have or don't. You build it the way you build anything: small, often and on purpose. These seven steps are designed for your ordinary days, and especially your bad ones.",
+      ]}
+    >
       {steps.map((step, i) => (
-        <section key={step.id} id={step.id} className="g-app">
-          <div className="lp-wrap">
-            <div className="g-col">
-              <div className="g-app-head">
-                <span className={`g-rank${i === 0 ? " first" : ""}`} aria-hidden="true">{i + 1}</span>
-                <h2>{step.title}</h2>
-              </div>
-              {step.body.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
-              <dl className="g-facts">
-                <div><dt>Example</dt><dd>{step.example}</dd></div>
-                <div><dt>Try today</dt><dd>{step.tryToday}</dd></div>
-              </dl>
-            </div>
-          </div>
-        </section>
+        <ArticleSection key={step.id} id={step.id} number={i + 1} title={step.title}>
+          {step.body.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+          <ArticleQuote label="Example">{step.example}</ArticleQuote>
+          <ArticleNotes notes={[{ label: "Try today", text: step.tryToday }]} />
+        </ArticleSection>
       ))}
-
-      <GuideMore current={path} />
-      <GuideFaq faqs={faqs} />
-      <GuideCta
-        heading="Start with one habit tonight."
-        text="dscpln keeps your streak in sight and Milo one message away. The yearly plan starts with a free trial."
-      />
-    </Guide>
+    </Article>
   );
 }
