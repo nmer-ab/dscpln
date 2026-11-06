@@ -5,7 +5,7 @@ description: "What dscpln collects, why, and how you stay in control of it."
 
 # Privacy Policy
 
-Last updated: 30 October 2026
+Last updated: 6 November 2026
 
 This policy explains what the dscpln app and the dscpln.app website collect, why, and what you can do about it. We collect only what the app needs to work.
 

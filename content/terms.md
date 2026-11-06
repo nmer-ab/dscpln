@@ -5,7 +5,7 @@ description: "The rules for using dscpln, including subscriptions and free trial
 
 # Terms of Use
 
-Last updated: 30 October 2026
+Last updated: 6 November 2026
 
 By using dscpln you agree to these terms. If you don't agree, please don't use the app.
 
