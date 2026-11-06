@@ -27,6 +27,17 @@ export function Check() {
   );
 }
 
+/** Structured data as a <script> tag, per the Next.js JSON-LD guide. */
+export function JsonLd({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      // Escape "<" so the payload can't close the script tag.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
+    />
+  );
+}
+
 /** Page shell: the .lp scope from the home page plus the FAQPage JSON-LD. */
 export function Guide({ faqs, children }: { faqs: GuideFaqItem[]; children: ReactNode }) {
   const faqJsonLd = {
@@ -41,17 +52,13 @@ export function Guide({ faqs, children }: { faqs: GuideFaqItem[]; children: Reac
 
   return (
     <div className="lp guide">
-      <script
-        type="application/ld+json"
-        // Escape "<" so the payload can't close the script tag.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
-      />
+      <JsonLd data={faqJsonLd} />
       {children}
     </div>
   );
 }
 
-export function GuideHead({ title, intro }: { title: ReactNode; intro: string[] }) {
+export function GuideHead({ title, intro, disclosure = true }: { title: ReactNode; intro: string[]; disclosure?: boolean }) {
   return (
     <header className="g-head">
       <div className="lp-wrap">
@@ -59,7 +66,7 @@ export function GuideHead({ title, intro }: { title: ReactNode; intro: string[] 
           <span className="eyebrow">Guide</span>
           <h1>{title}</h1>
           {intro.map((p) => <p key={p.slice(0, 24)} className="lede">{p}</p>)}
-          <p className="disclose"><b>Disclosure</b> We make dscpln.</p>
+          {disclosure && <p className="disclose"><b>Disclosure</b> We make dscpln.</p>}
         </div>
       </div>
     </header>
@@ -131,6 +138,11 @@ const guides = [
     href: "/habitica-alternatives",
     title: "Best Habitica alternatives in 2026",
     text: "Want less game, a calmer or more direct tone, or progress on your Home Screen? Here are the options.",
+  },
+  {
+    href: "/how-to-build-self-discipline",
+    title: "How to build self-discipline: 7 steps that work",
+    text: "Practical steps for the days motivation doesn't show up, from starting small to never missing twice.",
   },
 ];
 
