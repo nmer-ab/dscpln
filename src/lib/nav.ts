@@ -1,4 +1,5 @@
 export const mainNav = [
+  { label: "Quotes", href: "/quotes" },
   { label: "Guides", href: "/guides" },
   { label: "Tools", href: "/discipline-quote-generator" },
   { label: "Pricing", href: "/#pricing" },
@@ -9,7 +10,7 @@ export const productNav = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Guides", href: "/best-discipline-apps" },
+  { label: "Guides", href: "/guides" },
 ];
 
 export const legalNav = [

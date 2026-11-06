@@ -7,7 +7,7 @@ export function SiteHeader() {
     <header className="flex justify-center px-4 pt-6">
       <nav
         aria-label="Main"
-        className="flex items-center gap-4 rounded-[14px] bg-[rgba(31,31,29,0.06)] py-2 pr-3.5 pl-2.5 text-[14px] leading-normal font-medium min-[641px]:gap-[22px] min-[641px]:pr-[18px]"
+        className="flex items-center gap-4 rounded-[14px] bg-[rgba(31,31,29,0.06)] py-2 pr-3.5 pl-2.5 text-[14px] leading-normal font-medium max-[360px]:gap-3 min-[641px]:gap-[22px] min-[641px]:pr-[18px]"
       >
         <Link
           href="/"

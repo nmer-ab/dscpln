@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Guide, GuideCards, GuideHead, guides } from "@/components/guide/guide";
+import { Guide, GuideCards, GuideHead, guides, quotePages } from "@/components/guide/guide";
 
 const path = "/guides";
 const title = "Guides";
@@ -22,7 +22,8 @@ export default function GuidesPage() {
         intro={["Comparisons of discipline and habit apps, practical how-tos and free tools. Written by the people who make dscpln."]}
         disclosure={false}
       />
-      <GuideCards heading="All guides" items={guides} className="qx-last" />
+      <GuideCards heading="All guides" items={guides} />
+      <GuideCards heading="Quotes" items={quotePages} className="qx-last" />
     </Guide>
   );
 }

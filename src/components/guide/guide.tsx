@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { APP_STORE_URL } from "@/config/links";
+import { quoteCategories } from "@/data/quotes";
 import "@/app/landing.css";
 import "./guide.css";
 
@@ -206,6 +207,14 @@ export const guides: GuideLink[] = [
   },
 ];
 
+// The quote pages, listed under a "Quotes" heading after the guides.
+export const quotePages: GuideLink[] = quoteCategories.map((c) => ({
+  href: `/quotes/${c.slug}`,
+  title: `${c.name} quotes`,
+  text: c.summary,
+  tag: `${c.lines.length} lines`,
+}));
+
 /** A titled list of link cards (the "More guides" look). */
 export function GuideCards({ heading, items, className = "" }: { heading: string; items: GuideLink[]; className?: string }) {
   return (
@@ -230,9 +239,14 @@ export function GuideCards({ heading, items, className = "" }: { heading: string
   );
 }
 
-/** Cross-links to the other guides. `current` is this page's path. */
+/** Cross-links to the other guides, then the quote pages. `current` is this page's path. */
 export function GuideMore({ current }: { current: string }) {
-  return <GuideCards heading="More guides" items={guides.filter((g) => g.href !== current)} />;
+  return (
+    <>
+      <GuideCards heading="More guides" items={guides.filter((g) => g.href !== current)} />
+      <GuideCards heading="Quotes" items={quotePages} />
+    </>
+  );
 }
 
 /** Cards for specific guides, by path. Fails the build if a path isn't in the guides list. */
