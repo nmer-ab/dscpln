@@ -12,6 +12,9 @@ export type GuideApp = {
   /** Short version for the comparison table. */
   bestFor: string;
   platforms: string;
+  /** Optional table column and fact for the widget guides. */
+  widgetSizes?: string;
+  widget?: string;
   about: string[];
   bestForLong: string;
   limitation: string;
@@ -86,7 +89,7 @@ export function Guide({ faqs, children }: { faqs: GuideFaqItem[]; children: Reac
 
 export function GuideHead({ title, intro, disclosure = true, eyebrow = "Guide" }: {
   title: ReactNode;
-  intro: string[];
+  intro: ReactNode[];
   disclosure?: boolean;
   eyebrow?: string;
 }) {
@@ -96,7 +99,7 @@ export function GuideHead({ title, intro, disclosure = true, eyebrow = "Guide" }
         <div className="g-col">
           <span className="eyebrow">{eyebrow}</span>
           <h1>{title}</h1>
-          {intro.map((p) => <p key={p.slice(0, 24)} className="lede">{p}</p>)}
+          {intro.map((p, i) => <p key={i} className="lede">{p}</p>)}
           {disclosure && <p className="disclose"><b>Disclosure</b> We make dscpln.</p>}
         </div>
       </div>
@@ -105,6 +108,7 @@ export function GuideHead({ title, intro, disclosure = true, eyebrow = "Guide" }
 }
 
 export function GuideTable({ apps, heading }: { apps: GuideApp[]; heading: string }) {
+  const sizes = apps.some((a) => a.widgetSizes);
   return (
     <section id="at-a-glance">
       <div className="lp-wrap">
@@ -115,13 +119,19 @@ export function GuideTable({ apps, heading }: { apps: GuideApp[]; heading: strin
         <div className="g-table" role="region" aria-label="Comparison table" tabIndex={0}>
           <table>
             <thead>
-              <tr><th scope="col">App</th><th scope="col">Best for</th><th scope="col">Platforms</th></tr>
+              <tr>
+                <th scope="col">App</th>
+                <th scope="col">Best for</th>
+                {sizes && <th scope="col">Widget sizes</th>}
+                <th scope="col">Platforms</th>
+              </tr>
             </thead>
             <tbody>
               {apps.map((app) => (
                 <tr key={app.id}>
                   <th scope="row"><a href={`#${app.id}`}>{app.name}</a></th>
                   <td>{app.bestFor}</td>
+                  {sizes && <td>{app.widgetSizes}</td>}
                   <td>{app.platforms}</td>
                 </tr>
               ))}
@@ -144,6 +154,7 @@ export function GuideAppSections({ apps }: { apps: GuideApp[] }) {
           </div>
           {app.about.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
           <dl className="g-facts">
+            {app.widget && <div><dt>The widget</dt><dd>{app.widget}</dd></div>}
             <div><dt>Best for</dt><dd>{app.bestForLong}</dd></div>
             <div><dt>Limitation</dt><dd>{app.limitation}</dd></div>
           </dl>
@@ -185,6 +196,11 @@ const guides: { href: string; title: string; text: string; tag?: string }[] = [
     title: "Discipline quote generator",
     text: "60 original short lines on discipline and motivation. Copy one or save it for your Stories.",
     tag: "Free tool",
+  },
+  {
+    href: "/best-motivation-widgets-iphone",
+    title: "Best motivation widgets for iPhone in 2026",
+    text: "Quotes, affirmations, streaks or your own words: the widgets worth a spot on your Home Screen.",
   },
 ];
 
