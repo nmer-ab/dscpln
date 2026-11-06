@@ -27,36 +27,57 @@
 .lp .lede { color: var(--lp-muted); font-size: 17px; max-width: 34em; margin: 14px 0 0; }
 .lp section { padding-block: 88px; scroll-margin-top: 72px; }
 
-/* hero */
-.lp .hero { padding-block: 64px 0; }
-.lp .hero .lp-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: end; }
-.lp .hero h1 { font: 600 clamp(40px, 6vw, 68px)/1.04 var(--lp-serif); letter-spacing: -1.4px; margin-top: 18px; }
-.lp .hero h1 em { font-style: normal; background: linear-gradient(transparent 60%, var(--lp-lime) 60%, var(--lp-lime) 92%, transparent 92%); }
-.lp .hero .lede { font-size: 18.5px; }
-.lp .hero-badges { margin-top: 30px; }
-.lp .hero-art { position: relative; display: flex; justify-content: center; align-items: flex-end; min-height: 520px; }
-.lp .hero-milo { position: absolute; left: 0; bottom: 34px; width: 97px; height: auto; }
+/* hero (v4): centered title, then Milo on a ground line with floating app cards. Values match design/hero-demo.html. */
+/* --font-serif-display is Source Serif 4 with its optical-size axis, loaded by landing.tsx for the hero only. */
+.lp .hero { --lp-serif: var(--font-serif-display), Georgia, "Times New Roman", serif; padding-block: 64px 0; overflow-x: clip; }
+.lp .hero-top { text-align: center; padding-inline: 16px; }
+.lp .hero h1 { font: 700 clamp(48px, 8vw, 92px)/1 var(--lp-serif); letter-spacing: -2.5px; }
+.lp .hero h1 .comma { color: var(--lp-lime); }
+.lp .hero-sub { margin-top: 16px; font: 400 clamp(16px, 2vw, 19px)/1.45 var(--lp-sans); }
+.lp .hero-dl { margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; background: var(--lp-ink); color: #fff; border-radius: 12px; padding: 12px 22px; font: 500 16px var(--lp-sans); text-decoration: none; transition: background-color 0.2s; }
+.lp .hero-dl:hover { background: #3a3a37; }
+.lp .hero-dl svg { margin-top: -3px; }
+.lp .hero-small { margin-top: 12px; font: 400 13px var(--lp-sans); color: rgba(31, 31, 29, 0.58); }
 
-/* phone mock */
-.lp .phone { width: 270px; height: 540px; border-radius: 40px; background: var(--lp-paper); border: 9px solid var(--lp-ink); position: relative; overflow: hidden; margin-bottom: 26px; box-shadow: 0 30px 60px rgba(31, 31, 29, 0.14); }
-.lp .phone .isl { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); width: 76px; height: 22px; border-radius: 11px; background: var(--lp-ink); }
-.lp .ph-in { height: 100%; padding: 46px 16px 12px; display: flex; flex-direction: column; gap: 10px; }
-.lp .ph-date { font: 600 10px var(--lp-sans); letter-spacing: 1.2px; color: var(--lp-muted); }
-.lp .ph-hi { font: 600 21px/1.15 var(--lp-serif); }
-.lp .ph-line { background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 14px; padding: 12px; font: 600 13.5px/1.35 var(--lp-serif); }
-.lp .ph-line small { display: block; margin-top: 6px; font: 500 10px var(--lp-sans); color: var(--lp-muted); letter-spacing: 0.4px; }
-.lp .ph-h { display: flex; align-items: center; gap: 10px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 12px; padding: 10px; font: 600 12.5px/1.3 var(--lp-sans); }
-.lp .ph-h small { display: block; font: 400 10.5px var(--lp-sans); color: var(--lp-muted); }
-.lp .ph-h .r { width: 20px; height: 20px; border-radius: 10px; border: 1.5px solid rgba(31, 31, 29, 0.3); flex: none; display: flex; align-items: center; justify-content: center; }
-.lp .ph-h .r.on { background: var(--lp-lime); border-color: var(--lp-ink); }
-.lp .ph-h .r.sq { border-radius: 6px; background: var(--lp-lime); border-color: var(--lp-ink); font: 700 10px var(--lp-sans); }
-.lp .ph-streak { display: flex; justify-content: space-between; align-items: center; background: var(--lp-ink); color: var(--lp-card); border-radius: 14px; padding: 12px 14px; }
-.lp .ph-streak b { font: 600 26px/1 var(--lp-serif); }
-.lp .ph-streak span { font: 500 10.5px/1.3 var(--lp-sans); opacity: 0.8; }
-.lp .dots7 { display: flex; gap: 4px; margin-top: 6px; }
-.lp .dots7 i { width: 9px; height: 9px; border-radius: 5px; background: var(--lp-lime); }
-.lp .ph-tabs { margin-top: auto; display: flex; justify-content: space-around; border-top: 1px solid var(--lp-hair); padding-top: 10px; font: 600 9.5px var(--lp-sans); color: var(--lp-muted); letter-spacing: 0.4px; }
-.lp .ph-tabs b { color: var(--lp-ink); }
+.lp .stage { position: relative; width: min(900px, 100%); height: 500px; margin: 24px auto 0; }
+.lp .stage-milo { position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); height: 370px; width: auto; max-width: none; }
+.lp .ground { position: absolute; left: 50%; bottom: 52px; transform: translateX(-50%); width: 300px; height: 2px; background: var(--lp-ink); border-radius: 2px; }
+.lp .fc { position: absolute; border-radius: 22px; box-shadow: 0 14px 34px rgba(31, 31, 29, 0.14), 0 2px 6px rgba(31, 31, 29, 0.08); animation: lp-float 6s ease-in-out infinite; }
+@keyframes lp-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.lp .fc-1 { left: 9%; top: 150px; width: 88px; height: 88px; background: var(--lp-ink); display: flex; align-items: center; justify-content: center; rotate: -10deg; }
+.lp .fc-1 .mono { width: 44px; height: auto; }
+.lp .fc-1 i { position: absolute; right: 22px; bottom: 24px; width: 11px; height: 11px; border-radius: 50%; background: var(--lp-lime); }
+.lp .fc-2 { left: 22%; top: 40px; width: 120px; height: 120px; background: var(--lp-card); padding: 14px; rotate: -6deg; animation-delay: -1.5s; }
+.lp .fc-2 b { display: block; font: 700 46px/1 var(--lp-serif); }
+.lp .fc-2 span { font: 500 12px var(--lp-sans); color: rgba(31, 31, 29, 0.58); }
+.lp .fc-dots { display: flex; gap: 4px; margin-top: 12px; }
+.lp .fc-dots u { width: 10px; height: 10px; border-radius: 50%; background: var(--lp-lime); }
+.lp .fc-dots u.o { background: rgba(31, 31, 29, 0.1); }
+.lp .fc-3 { left: 41%; top: 0; width: 176px; height: 96px; background: var(--lp-lime); padding: 14px 16px; rotate: 3deg; animation-delay: -3s; }
+.lp .fc-3 p { font: 600 17px/1.2 var(--lp-serif); }
+.lp .fc-3 small { display: block; margin-top: 8px; font: 600 10px var(--lp-sans); letter-spacing: 1px; color: var(--lp-olive); }
+.lp .fc-4 { right: 22%; top: 50px; width: 84px; height: 84px; background: var(--lp-card); display: flex; align-items: center; justify-content: center; rotate: 8deg; animation-delay: -2s; }
+.lp .fc-5 { right: 7%; top: 140px; width: 136px; height: 72px; background: var(--lp-card); padding: 12px 14px; rotate: -5deg; animation-delay: -4s; }
+.lp .fc-5 small { display: block; font: 600 10px var(--lp-sans); letter-spacing: 1px; color: rgba(31, 31, 29, 0.58); }
+.lp .fc-5 b { display: block; margin-top: 4px; font: 600 20px var(--lp-sans); }
+.lp .fc-6 { left: 15%; top: 300px; width: 150px; height: 58px; background: var(--lp-card); padding: 10px 14px; border-radius: 18px 18px 18px 6px; rotate: 4deg; font: 500 13px/1.3 var(--lp-sans); animation-delay: -2.5s; }
+.lp .fc-6 b { display: block; font: 600 11px var(--lp-sans); color: var(--lp-olive); }
+.lp .fc-7 { right: 14%; top: 290px; width: 70px; height: 70px; background: var(--lp-ink); display: flex; align-items: center; justify-content: center; rotate: -8deg; animation-delay: -5s; }
+@media (max-width: 640px) {
+  .lp .stage { height: 470px; }
+  .lp .stage-milo { height: 330px; }
+  .lp .fc-1 { left: 2%; top: 170px; width: 64px; height: 64px; }
+  .lp .fc-1 .mono { width: 32px; }
+  .lp .fc-1 i { right: 14px; bottom: 16px; }
+  .lp .fc-2 { left: 4%; top: 40px; width: 96px; height: 96px; }
+  .lp .fc-2 b { font-size: 36px; }
+  .lp .fc-3 { left: 33%; top: 0; width: 140px; height: 84px; }
+  .lp .fc-3 p { font-size: 14px; }
+  .lp .fc-4 { right: 4%; top: 50px; width: 64px; height: 64px; }
+  .lp .fc-5 { display: none; }
+  .lp .fc-6 { left: 2%; top: 270px; width: 120px; }
+  .lp .fc-7 { right: 4%; top: 200px; width: 56px; height: 56px; }
+}
 
 /* landscape */
 .lp .land { position: relative; height: 210px; overflow: hidden; margin-top: -6px; }
@@ -173,13 +194,10 @@
 
 @media (max-width: 880px) {
   .lp .lp-wrap { padding-inline: 16px; }
-  .lp .hero .lp-wrap,
   .lp .how .lp-wrap,
   .lp .widgets .lp-wrap,
   .lp .duo .lp-wrap,
   .lp .faq .lp-wrap { grid-template-columns: 1fr; }
-  .lp .hero-art { min-height: 0; padding-top: 10px; }
-  .lp .hero-milo { left: 4px; width: 62px; }
   .lp .feats,
   .lp .plans { grid-template-columns: 1fr; }
   .lp .cta-box { grid-template-columns: 1fr; padding: 32px 22px; }
@@ -189,5 +207,6 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .lp .land-track,
-  .lp .walker { animation: none; }
+  .lp .walker,
+  .lp .fc { animation: none; }
 }

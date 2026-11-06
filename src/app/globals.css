@@ -52,14 +52,7 @@
   padding-inline: 24px;
 }
 
-/* Keep #anchors clear of the sticky header (68px mobile, 88px desktop). */
 html {
-  scroll-padding-top: 68px;
-
-  @media (min-width: 1024px) {
-    scroll-padding-top: 88px;
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
   }

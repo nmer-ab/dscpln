@@ -1,40 +1,32 @@
 import Link from "next/link";
-import { APP_STORE_URL } from "@/config/links";
 import { mainNav } from "@/lib/nav";
-import { MobileMenu } from "./mobile-menu";
-import { Wordmark } from "./wordmark";
+import { MonoD } from "./mono-d";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[rgba(31,31,29,0.14)] bg-hero/90 backdrop-blur-[12px]">
-      {/* 1024–1279: nav centers in the space between logo and badges (no room for true centering). ≥1280: page-centered. */}
-      <div className="wrap flex h-[68px] items-center justify-between lg:grid lg:h-[88px] lg:grid-cols-[auto_1fr_auto] xl:grid-cols-[1fr_auto_1fr]">
-        <Link href="/" aria-label="dscpln home" className="justify-self-start">
-          <Wordmark height={30} />
-        </Link>
-
-        <nav aria-label="Main" className="hidden gap-8 justify-self-center lg:flex">
-          {mainNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-[15px] font-medium text-muted transition-colors hover:text-ink"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <a
-          href={APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden h-11 items-center justify-self-end rounded-xl bg-ink px-5 text-[15px] font-semibold text-white transition-colors hover:bg-[#3a3a37] lg:inline-flex"
+    <header className="flex justify-center px-4 pt-6">
+      <nav
+        aria-label="Main"
+        className="flex items-center gap-4 rounded-[14px] bg-[rgba(31,31,29,0.06)] py-2 pr-3.5 pl-2.5 text-[14px] leading-normal font-medium min-[641px]:gap-[22px] min-[641px]:pr-[18px]"
+      >
+        <Link
+          href="/"
+          aria-label="dscpln home"
+          className="relative flex size-[30px] items-center justify-center rounded-[9px] bg-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-green"
         >
-          Get the app
-        </a>
-        <MobileMenu />
-      </div>
+          <MonoD className="h-auto w-[17px]" />
+          <i className="absolute right-1.5 bottom-2 size-[5px] rounded-full bg-lime" />
+        </Link>
+        {mainNav.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="rounded-md text-ink transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-green"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }

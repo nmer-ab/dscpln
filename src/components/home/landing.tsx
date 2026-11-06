@@ -1,6 +1,17 @@
 /* eslint-disable @next/next/no-img-element -- static line-art SVGs, sized by CSS */
+import { Source_Serif_4 } from "next/font/google";
 import { QRCodeSVG } from "qrcode.react";
+import { MonoD } from "@/components/mono-d";
 import { StoreBadges } from "@/components/store-badges";
+import { APP_STORE_URL } from "@/config/links";
+
+// The hero's serif keeps its optical-size axis so large titles use the display cut, as in design/hero-demo.html.
+// Loaded here, not in the layout, so only the home page downloads it.
+const serifDisplay = Source_Serif_4({
+  variable: "--font-serif-display",
+  axes: ["opsz"],
+  subsets: ["latin"],
+});
 
 function Check({ size = 14 }: { size?: number }) {
   return (
@@ -50,42 +61,51 @@ const faqs: { q: string; a: React.ReactNode }[] = [
 
 function Hero() {
   return (
-    <section className="hero">
-      <div className="lp-wrap">
-        <div>
-          <span className="eyebrow">dscpln: Daily Discipline</span>
-          <h1>
-            Keep the promises you make to <em>yourself.</em>
-          </h1>
-          <p className="lede">
-            Pick one or two habits. Tick them off every day and watch your streak grow. When motivation drops, Milo, your coach, is one message away.
-          </p>
-          <StoreBadges size="sm" className="hero-badges" />
+    <section className={`hero ${serifDisplay.variable}`}>
+      <div className="hero-top">
+        <h1>
+          Meet dscpln<span className="comma">,</span>
+        </h1>
+        <p className="hero-sub">and keep the small promises you make to yourself.</p>
+        <a className="hero-dl" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="18" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
+            <path d="M788 340c-6 4-110 63-110 193 0 151 132 204 136 206-1 3-21 73-70 145-43 63-89 126-158 126s-87-40-167-40c-78 0-106 41-169 41s-107-58-158-130C33 797-15 667-15 543c0-198 129-303 256-303 67 0 124 44 166 44 40 0 103-47 180-47 29 0 133 3 201 103zM554 155c31-37 54-89 54-140 0-7-1-14-2-20-51 2-112 34-149 77-28 32-55 84-55 136 0 8 1 16 2 19 3 1 9 1 14 1 46 0 103-31 136-73z" />
+          </svg>
+          Download
+        </a>
+        <p className="hero-small">Free for iPhone · 3-day trial on Pro</p>
+      </div>
+      <div
+        className="stage"
+        role="img"
+        aria-label="Milo cheering, surrounded by cards from the app: a 12-day streak, today's line, a done check, the next nudge at 07:30 and a note from Milo"
+      >
+        <div className="fc fc-2">
+          <b>12</b>
+          <span>day streak</span>
+          <div className="fc-dots"><u /><u /><u /><u /><u /><u className="o" /><u className="o" /></div>
         </div>
-        <div className="hero-art">
-          <img className="hero-milo" src="/milo-v3/milo-cheer.svg" alt="" width={188} height={292} />
-          <div className="phone" role="img" aria-label="The dscpln Today screen: today's line, two habits, today's reads and a 7-day streak">
-            <span className="isl" />
-            <div className="ph-in">
-              <span className="ph-date">FRIDAY 30 OCTOBER</span>
-              <span className="ph-hi">Good morning, Ahmed.</span>
-              <div className="ph-line">
-                Do the small thing before the day talks you out of it.<small>TODAY&apos;S LINE · DISCIPLINE</small>
-              </div>
-              <div className="ph-h"><span className="r on"><Check /></span><span>Walk 10 minutes<small>08:00 · Done</small></span></div>
-              <div className="ph-h"><span className="r" /><span>Read 10 pages<small>21:00</small></span></div>
-              <div className="ph-h"><span className="r sq">3</span><span>Today&apos;s reads<small>3 new · 6 min</small></span></div>
-              <div className="ph-streak">
-                <div>
-                  <b>Day 7</b>
-                  <div className="dots7">{Array.from({ length: 7 }, (_, i) => <i key={i} />)}</div>
-                </div>
-                <span>First streak<br />done</span>
-              </div>
-              <div className="ph-tabs"><b>TODAY</b><span>TOPICS</span><span>COACH</span><span>SAVED</span><span>PROFILE</span></div>
-            </div>
-          </div>
+        <div className="fc fc-3"><p>Start small. Start now.</p><small>TODAY&apos;S LINE</small></div>
+        <div className="fc fc-4">
+          <svg width="40" height="40" viewBox="0 0 40 40">
+            <circle cx="20" cy="20" r="18" fill="#C8E26A" />
+            <path d="M12 20.5l5.5 5.5L28.5 14" fill="none" stroke="#1F1F1D" strokeWidth={3.6} strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
+        <div className="fc fc-5"><small>NEXT NUDGE</small><b>07:30</b></div>
+        <div className="fc fc-1">
+          <MonoD className="mono" />
+          <i />
+        </div>
+        <div className="fc fc-6"><b>MILO</b>One rep. Then decide.</div>
+        <div className="fc fc-7">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C8E26A" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.7 21a2 2 0 0 1-3.4 0" />
+          </svg>
+        </div>
+        <span className="ground" />
+        <img className="stage-milo" src="/milo-v3/milo-cheer.svg" alt="" width={188} height={292} />
       </div>
     </section>
   );

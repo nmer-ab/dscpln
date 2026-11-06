@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BASE, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/get`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/guides`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/best-discipline-apps`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/fabulous-alternatives`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/habitica-alternatives`, changeFrequency: "monthly", priority: 0.7 },

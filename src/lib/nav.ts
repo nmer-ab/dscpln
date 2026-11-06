@@ -1,9 +1,7 @@
 export const mainNav = [
-  { label: "Features", href: "/#features" },
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "Widgets", href: "/#widgets" },
+  { label: "Guides", href: "/guides" },
+  { label: "Tools", href: "/discipline-quote-generator" },
   { label: "Pricing", href: "/#pricing" },
-  { label: "FAQ", href: "/#faq" },
 ];
 
 export const productNav = [
