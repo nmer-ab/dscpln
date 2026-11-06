@@ -21,10 +21,7 @@ Send an email to [support@dscpln.app](mailto:support@dscpln.app?subject=Delete%2
 
 ## Cancel your subscription too
 
-Deleting your account **does not cancel your dscpln Pro subscription**. Apple or Google bill it, so cancel it there:
-
-- **iPhone:** Settings → your name → Subscriptions → dscpln → Cancel subscription.
-- **Android:** Google Play → your profile → Payments & subscriptions → Subscriptions → dscpln → Cancel.
+Deleting your account **does not cancel your dscpln Pro subscription**. Apple bills it, so cancel it on your iPhone: Settings → your name → Subscriptions → dscpln → Cancel subscription.
 
 ## What gets deleted
 

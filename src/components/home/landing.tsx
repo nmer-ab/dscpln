@@ -34,7 +34,7 @@ const reads = [
 const faqs: { q: string; a: React.ReactNode }[] = [
   { q: "What is dscpln?", a: "A daily discipline app. You pick one or two habits, tick them off each day and build a streak. Milo, the app's coach, helps when you're stuck, and three short reads arrive every morning." },
   { q: "Is there a free trial?", a: "Yes. The yearly plan starts with 3 days free. We remind you the day before it ends, and you can cancel in Settings before then and pay nothing." },
-  { q: "How do I cancel?", a: "On iPhone: Settings, your name, Subscriptions, dscpln. On Android: Google Play, Payments & subscriptions, Subscriptions. Cancelling stops the next renewal; you keep access until the end of the period you paid for." },
+  { q: "How do I cancel?", a: "Open Settings on your iPhone, tap your name, then Subscriptions, then dscpln. Cancelling stops the next renewal; you keep access until the end of the period you paid for." },
   {
     q: "Is Milo a therapist?",
     a: (
@@ -45,7 +45,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
     ),
   },
   { q: "Where is my journal stored?", a: "Your journal and mood check-ins stay on your phone. They are not uploaded." },
-  { q: "Which phones does it work on?", a: "iPhone and Android, through the App Store and Google Play." },
+  { q: "Which phones does it work on?", a: "iPhone. You can download it from the App Store." },
 ];
 
 function Hero() {
@@ -242,7 +242,7 @@ function Pricing() {
           </div>
         </div>
         <p className="fine">
-          Prices in US dollars; the App Store and Google Play show the price in your currency. Subscriptions renew automatically until you cancel. Cancel any time in your store&apos;s subscription settings; access continues until the end of the period you paid for.
+          Prices in US dollars; the App Store shows the price in your currency. Subscriptions renew automatically until you cancel. Cancel any time in your App Store subscription settings; access continues until the end of the period you paid for.
         </p>
       </div>
     </section>

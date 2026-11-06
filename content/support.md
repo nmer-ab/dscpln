@@ -23,15 +23,15 @@ The yearly plan starts with 3 days free, once per account. We remind you the day
 
 ### How do I cancel?
 
-In the app: **Profile → Manage subscription**. Or on iPhone: Settings → your name → Subscriptions → dscpln. On Android: Google Play → Payments & subscriptions → Subscriptions. You keep access until the end of the period you paid for.
+In the app: **Profile → Manage subscription**. Or on iPhone: Settings → your name → Subscriptions → dscpln. You keep access until the end of the period you paid for.
 
 ### I paid but the app still asks me to subscribe
 
-Tap **Restore** at the bottom of the plans screen. Use the same Apple ID or Google account you paid with. If that doesn't work, write to us with the date of the purchase.
+Tap **Restore** at the bottom of the plans screen. Use the same Apple ID you paid with. If that doesn't work, write to us with the date of the purchase.
 
 ### How do I get a refund?
 
-Apple and Google handle payments, so refunds go through them: [reportaproblem.apple.com](https://reportaproblem.apple.com) for iPhone, or Google Play → Order history for Android.
+Apple handles payments, so refunds go through Apple: [reportaproblem.apple.com](https://reportaproblem.apple.com).
 
 ## Habits, nudges and widgets
 

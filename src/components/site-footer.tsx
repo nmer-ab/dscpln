@@ -35,7 +35,7 @@ export function SiteFooter() {
 
           <div>
             <h2 className="font-syne text-[20px] leading-tight font-bold">Get the app</h2>
-            <StoreBadges size="sm" stacked className="mt-5" />
+            <StoreBadges size="sm" className="mt-5" />
           </div>
         </div>
 

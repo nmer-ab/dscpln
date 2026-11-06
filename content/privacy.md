@@ -21,7 +21,7 @@ These are stored on our servers so they follow you to a new phone:
 - **Profile:** the name you give us, your language, your onboarding answers (your focus areas, habits, minutes a day, first streak, nudge times, theme and widget) and your reminder settings.
 - **Habits and streaks:** the habits you pick, the days you tick them off, your streak, streak freezes and your time zone, so a day ends at your midnight.
 - **Milo chats:** the messages you send to Milo, Milo's replies and how many messages you've sent today.
-- **Subscription:** whether you have dscpln Pro, which plan and until when. We get this from Apple or Google through RevenueCat. We never see your card or payment details.
+- **Subscription:** whether you have dscpln Pro, which plan and until when. We get this from Apple through RevenueCat. We never see your card or payment details.
 - **Creator code:** if you enter one, so the creator who sent you gets credit.
 - **Reports:** if you report a fact or a line as wrong, what you reported.
 
@@ -60,8 +60,8 @@ We don't sell your data, we don't show ads and we don't track you across other a
 - **Supabase** (servers in Ireland, EU): database, sign-in and sign-in emails.
 - **Resend:** delivering sign-in emails.
 - **OpenRouter** and the AI model providers it uses: Milo's replies and your daily lines.
-- **RevenueCat:** checking your subscription with Apple and Google.
-- **Apple and Google:** app distribution, payments and subscriptions.
+- **RevenueCat:** checking your subscription with Apple.
+- **Apple:** app distribution, payments and subscriptions.
 - **Cloudflare:** this website and our support email.
 
 Some of these providers process data outside the European Union. When they do, the transfer is protected by safeguards such as the EU Standard Contractual Clauses.

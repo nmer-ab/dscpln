@@ -4,7 +4,7 @@ import Link from "next/link";
 import { StoreBadges } from "@/components/store-badges";
 import { StoreRedirect } from "./store-redirect";
 
-const description = "Download dscpln on the App Store or Google Play.";
+const description = "Download dscpln for iPhone on the App Store.";
 
 export const metadata: Metadata = {
   // absolute: the "%s · dscpln" template would give "Get dscpln · dscpln".
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Get dscpln", description, url: "/get", images: "/og.png" },
 };
 
-// One link for QR codes and social bios: phones are sent to their store, everything else sees the badges.
+// One link for QR codes and social bios: iPhones are sent to the App Store, everything else sees the badge.
 export default function GetPage() {
   return (
     <div className="flex flex-1 flex-col items-center justify-center bg-hero px-6 py-24 text-center">

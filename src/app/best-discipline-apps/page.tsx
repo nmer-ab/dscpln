@@ -57,7 +57,7 @@ const apps: App[] = [
     id: "dscpln",
     name: "dscpln",
     bestFor: "One or two daily habits, with a coach for the hard days",
-    platforms: "iPhone (Android coming soon)",
+    platforms: "iPhone",
     about: [
       "dscpln is built around a simple idea: pick one or two habits and do them every day. You give each habit a time, sign a short pledge to yourself, and tick it off as you go. Your streak grows with every day you show up, and a missed day is plain to see.",
       "Milo, the app's coach, climbs your Home Screen widget as you tick habits off, and there are several widget styles to choose from. When motivation drops, you can message Milo and get a straight answer and one next step. Each morning brings three short reads on discipline and mindset, and your journal and mood check-ins stay on your phone.",
@@ -65,13 +65,13 @@ const apps: App[] = [
     bestForLong:
       "People who want a small daily commitment, a streak worth protecting, and some help on the days they don't feel like it.",
     limitation:
-      "You need a subscription to use it, though the yearly plan starts with a free trial. It's iPhone-only for now, and it's deliberately narrow: it won't replace a to-do list or a full planner.",
+      "You need a subscription to use it, though the yearly plan starts with a free trial. It only runs on iPhone, and it's deliberately narrow: it won't replace a to-do list or a full planner.",
   },
   {
     id: "fabulous",
     name: "Fabulous",
     bestFor: "Guided routines, built up step by step",
-    platforms: "iPhone, Android",
+    platforms: "iPhone",
     about: [
       "Fabulous turns habit building into a guided program. Instead of starting from a blank list, you follow journeys that add small habits a little at a time, like drinking water when you wake up or stretching, and stack them into morning, afternoon and evening routines.",
       "Along the way it offers coaching content, guided audio sessions and reminders, all wrapped in a warm, illustrated design. The approach is grounded in behavioral science, and it's made to help you form routines rather than just record them.",
@@ -84,7 +84,7 @@ const apps: App[] = [
     id: "habitica",
     name: "Habitica",
     bestFor: "Gamers and friends who keep each other on track",
-    platforms: "iPhone, Android, web",
+    platforms: "iPhone, web",
     about: [
       "Habitica turns your life into a role-playing game. You create a pixel-art avatar and add habits you want to build or break, dailies you have to do every day, and to-dos. Completing them earns experience and gold, which you spend on gear, pets and mounts. Skipping a daily costs your character health.",
       "The real hook is social. You can join a party with friends, take on quests together, and feel it when someone skips their dailies. It's free to use, with an optional subscription, and it runs on the web as well as on phones.",
@@ -104,13 +104,13 @@ const apps: App[] = [
     ],
     bestForLong: "iPhone and Apple Watch users who want a tidy tracker they pay for once.",
     limitation:
-      "It only runs on Apple devices, so it won't follow you to Android. And it tracks rather than motivates: there's no coaching or content to lean on when you're tempted to skip.",
+      "It tracks rather than motivates: there's no coaching or content to lean on when you're tempted to skip.",
   },
   {
     id: "finch",
     name: "Finch",
     bestFor: "Gentle self-care with a pet to look after",
-    platforms: "iPhone, Android",
+    platforms: "iPhone",
     about: [
       "Finch pairs self-care with a virtual pet. You adopt a small bird and set goals for the day, and every goal you complete gives your bird energy to go on adventures and grow.",
       "Around that loop sit mood check-ins, journaling prompts, breathing exercises and reflections, all in a soft, kind tone. The core app is free, with an optional subscription for extra content and customization.",
@@ -123,7 +123,7 @@ const apps: App[] = [
     id: "stoic",
     name: "Stoic.",
     bestFor: "Daily journaling and reflection",
-    platforms: "iPhone, Android",
+    platforms: "iPhone",
     about: [
       "Stoic. is a journaling app inspired by Stoic philosophy. It guides you through a morning check-in to prepare for the day and an evening reflection to review it, with prompts to get you writing.",
       "It adds mood tracking, quotes from Stoic thinkers, and breathing and meditation exercises. Over time, your entries build a picture of how your days and moods connect. It's a calm, well-designed place to think.",
@@ -136,7 +136,7 @@ const apps: App[] = [
     id: "motivation",
     name: "Motivation – Daily quotes",
     bestFor: "A quote on your Home Screen, with no setup",
-    platforms: "iPhone, Android",
+    platforms: "iPhone",
     about: [
       "Motivation – Daily quotes keeps things simple: it puts motivational quotes in front of you through the day. You pick the topics you care about and when you want reminders, and quotes arrive as notifications and on Home Screen widgets.",
       "You can save favorites, change the look with themes, and add quotes of your own.",

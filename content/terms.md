@@ -22,9 +22,9 @@ You must be 16 or older. Keep your account to yourself, don't share your sign-in
 - dscpln needs a **dscpln Pro** subscription. The plans are yearly, monthly and weekly. The price is shown in the app before you pay, in your currency.
 - The **yearly plan** can start with a **3-day free trial**, once per account. We remind you the day before it ends if you leave the reminder on. If you don't cancel before the trial ends, the yearly subscription starts and you are charged.
 - Subscriptions **renew automatically** at the end of each period unless you cancel at least 24 hours before it ends.
-- **Cancel** any time in your App Store or Google Play settings, or in the app from Profile → Manage subscription. You keep access until the end of the period you paid for. Deleting the app or your account does not cancel a subscription.
-- Payments, renewals and **refunds** are handled by Apple or Google under their rules. To ask for a refund, contact them.
-- If we change a price, Apple or Google tell you before it applies, and you can cancel before then.
+- **Cancel** any time in your App Store settings, or in the app from Profile → Manage subscription. You keep access until the end of the period you paid for. Deleting the app or your account does not cancel a subscription.
+- Payments, renewals and **refunds** are handled by Apple under its rules. To ask for a refund, contact Apple.
+- If we change a price, Apple tells you before it applies, and you can cancel before then.
 
 ## Creator codes
 
