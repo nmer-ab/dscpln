@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element -- static badge SVG, sized by CSS (same as the guides) */
 import type { Metadata } from "next";
-import { Guide, GuideFaq, GuideHead, GuideMore, JsonLd } from "@/components/guide/guide";
+import { Guide, GuideFaq, GuideHead, GuideHomeScreen, GuideMore, JsonLd } from "@/components/guide/guide";
 import { QuoteGenerator } from "@/components/guide/quote-generator";
-import { APP_STORE_URL } from "@/config/links";
 
 const path = "/discipline-quote-generator";
 const title = "Discipline quote generator";
@@ -67,27 +65,7 @@ export default function QuoteGeneratorPage() {
         </div>
       </section>
 
-      <section id="home-screen" className="g-plain qg-home">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <span className="eyebrow">dscpln widget</span>
-            <h2>Get a new line every morning on your Home Screen</h2>
-            <p>
-              dscpln, the app we make, gives you a fresh line every morning. Add the Handwritten widget and it sits on your Home Screen next to your streak, so you see it every time you unlock your phone.
-            </p>
-            <div className="wall qg-wall" role="img" aria-label="The dscpln Handwritten widget showing today's line and the streak">
-              <div className="w wide w-hand">
-                <span className="dayn">12</span>
-                <div><p>Keep the promise while it&apos;s still small enough to keep.</p><small>DAY 12 · 1 OF 2 DONE</small></div>
-              </div>
-            </div>
-            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="g-badge">
-              {/* Official black badge; viewBox is 119.66 × 40 */}
-              <img src="/badges/app-store.svg" alt="Download dscpln on the App Store" width={132} height={44} />
-            </a>
-          </div>
-        </div>
-      </section>
+      <GuideHomeScreen line="Keep the promise while it's still small enough to keep." />
 
       <GuideMore current={path} />
       <GuideFaq faqs={faqs} />

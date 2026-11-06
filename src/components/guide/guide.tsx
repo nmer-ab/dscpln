@@ -67,8 +67,8 @@ export function articleJsonLd({ path, title, description, published, modified = 
   };
 }
 
-/** Page shell: the .lp scope from the home page plus the FAQPage JSON-LD. */
-export function Guide({ faqs, children }: { faqs: GuideFaqItem[]; children: ReactNode }) {
+/** Page shell: the .lp scope from the home page plus, when the page has FAQs, the FAQPage JSON-LD. */
+export function Guide({ faqs = [], children }: { faqs?: GuideFaqItem[]; children: ReactNode }) {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -81,7 +81,7 @@ export function Guide({ faqs, children }: { faqs: GuideFaqItem[]; children: Reac
 
   return (
     <div className="lp guide">
-      <JsonLd data={faqJsonLd} />
+      {faqs.length > 0 && <JsonLd data={faqJsonLd} />}
       {children}
     </div>
   );
@@ -91,7 +91,7 @@ export function GuideHead({ title, intro, disclosure = true, eyebrow = "Guide" }
   title: ReactNode;
   intro: ReactNode[];
   disclosure?: boolean;
-  eyebrow?: string;
+  eyebrow?: ReactNode;
 }) {
   return (
     <header className="g-head">
@@ -164,8 +164,10 @@ export function GuideAppSections({ apps }: { apps: GuideApp[] }) {
   ));
 }
 
+export type GuideLink = { href: string; title: string; text: string; tag?: string };
+
 // Every guide. Each page lists the others under "More guides"; add new guides here.
-const guides: { href: string; title: string; text: string; tag?: string }[] = [
+export const guides: GuideLink[] = [
   {
     href: "/best-discipline-apps",
     title: "Best discipline apps in 2026",
@@ -204,26 +206,66 @@ const guides: { href: string; title: string; text: string; tag?: string }[] = [
   },
 ];
 
-/** Cross-links to the other guides. `current` is this page's path. */
-export function GuideMore({ current }: { current: string }) {
+/** A titled list of link cards (the "More guides" look). */
+export function GuideCards({ heading, items, className = "" }: { heading: string; items: GuideLink[]; className?: string }) {
   return (
-    <section className="g-more">
+    <section className={`g-more ${className}`.trim()}>
       <div className="lp-wrap">
         <div className="g-col">
-          <h2 className="eyebrow">More guides</h2>
+          <h2 className="eyebrow">{heading}</h2>
           <ul className="g-more-list">
-            {guides
-              .filter((g) => g.href !== current)
-              .map((g) => (
-                <li key={g.href}>
-                  <Link href={g.href} className="g-more-card">
-                    {g.tag && <span className="g-more-tag">{g.tag}</span>}
-                    <b>{g.title}</b>
-                    <span className="g-more-text">{g.text}</span>
-                  </Link>
-                </li>
-              ))}
+            {items.map((g) => (
+              <li key={g.href}>
+                <Link href={g.href} className="g-more-card">
+                  {g.tag && <span className="g-more-tag">{g.tag}</span>}
+                  <b>{g.title}</b>
+                  <span className="g-more-text">{g.text}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Cross-links to the other guides. `current` is this page's path. */
+export function GuideMore({ current }: { current: string }) {
+  return <GuideCards heading="More guides" items={guides.filter((g) => g.href !== current)} />;
+}
+
+/** Cards for specific guides, by path. Fails the build if a path isn't in the guides list. */
+export function GuideRelated({ hrefs, heading = "Related guides", className }: { hrefs: string[]; heading?: string; className?: string }) {
+  const items = hrefs.map((href) => {
+    const guide = guides.find((g) => g.href === href);
+    if (!guide) throw new Error(`Unknown guide: ${href}`);
+    return guide;
+  });
+  return <GuideCards heading={heading} items={items} className={className} />;
+}
+
+/** "Get a new line every morning" box: the Handwritten widget showing `line`, plus the App Store badge. */
+export function GuideHomeScreen({ line, className = "" }: { line: string; className?: string }) {
+  return (
+    <section id="home-screen" className={`g-plain qg-home ${className}`.trim()}>
+      <div className="lp-wrap">
+        <div className="g-col">
+          <span className="eyebrow">dscpln widget</span>
+          <h2>Get a new line every morning on your Home Screen</h2>
+          <p>
+            dscpln, the app we make, gives you a fresh line every morning. Add the Handwritten widget and it sits on your Home Screen next to your streak, so you see it every time you unlock your phone.
+          </p>
+          <div className="wall qg-wall" role="img" aria-label="The dscpln Handwritten widget showing today's line and the streak">
+            <div className="w wide w-hand">
+              <span className="dayn">12</span>
+              <div><p>{line}</p><small>DAY 12 · 1 OF 2 DONE</small></div>
+            </div>
+          </div>
+          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="g-badge">
+            {/* Official black badge; viewBox is 119.66 × 40 */}
+            <img src="/badges/app-store.svg" alt="Download dscpln on the App Store" width={132} height={44} />
+          </a>
         </div>
       </div>
     </section>
