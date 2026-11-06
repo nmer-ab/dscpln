@@ -59,3 +59,57 @@
   .lp.guide .cta-band { padding-block: 48px 64px; }
   .lp.guide .g-facts div { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* printable checklist (/30-day-discipline-challenge) */
+.lp.guide .g-week-head { margin-top: 10px; }
+.lp.guide .g-weeks { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; font-size: 14.5px; }
+.lp.guide .g-weeks li { display: flex; gap: 10px; align-items: baseline; }
+.lp.guide .g-weeks b { flex: none; font: 600 11px var(--lp-sans); letter-spacing: 1.2px; text-transform: uppercase; color: var(--lp-olive); min-width: 74px; }
+.lp.guide .g-start { margin: 22px 0 0; font-size: 15px; display: flex; align-items: flex-end; gap: 10px; }
+.lp.guide .g-start span { width: 180px; border-bottom: 1.5px solid var(--lp-ink); height: 1.2em; }
+.lp.guide .g-checklist { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.lp.guide .g-day label { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 12px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 12px; cursor: pointer; }
+.lp.guide .g-day.w2 label,
+.lp.guide .g-day.w4 label { background: var(--lp-tint); }
+.lp.guide .g-day input { width: 22px; height: 22px; margin: 0; accent-color: var(--lp-olive); }
+.lp.guide .g-day-num { font: 600 16px/1 var(--lp-serif); }
+.lp.guide .g-day-week { font: 600 10px var(--lp-sans); letter-spacing: 1px; text-transform: uppercase; color: var(--lp-muted); margin-top: -6px; }
+.lp.guide .g-print-actions { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.lp.guide .g-print-btn { height: 44px; padding: 0 20px; border: 0; border-radius: 12px; background: var(--lp-ink); color: #fff; font: 600 15px var(--lp-sans); cursor: pointer; transition: background 0.2s; }
+.lp.guide .g-print-btn:hover { background: #3a3a37; }
+.lp.guide .g-print-actions p { margin: 0; flex: 1 1 260px; font-size: 15px; color: var(--lp-muted); }
+.lp.guide .g-plain p { margin: 16px 0 0; font-size: 17px; line-height: 1.65; }
+.lp.guide .g-plain .g-col { border-top: 1px solid var(--lp-hair); padding-top: 40px; }
+
+@media (max-width: 880px) {
+  .lp.guide .g-weeks { grid-template-columns: 1fr; }
+  .lp.guide .g-checklist { gap: 6px; }
+  .lp.guide .g-day label { padding: 8px; gap: 8px; border-radius: 10px; }
+  .lp.guide .g-day-num { font-size: 13px; }
+  .lp.guide .g-day-week { display: none; }
+}
+
+/* Printing a page with a checklist prints only the checklist, sized to fit one A4 or Letter page. */
+@media print {
+  @page { margin: 12mm; }
+  html:has(.g-print),
+  html:has(.g-print) body { height: auto; min-height: 0; background: #fff; }
+  body:has(.g-print) > header,
+  body:has(.g-print) > footer,
+  .lp.guide:has(.g-print) > :not(.g-print),
+  .lp.guide .g-print .g-print-actions { display: none !important; }
+  .lp.guide:has(.g-print) { background: #fff; }
+  .lp.guide .g-print { padding: 0; }
+  .lp.guide .g-print .lp-wrap { padding: 0; max-width: none; }
+  /* Fixed width that fits inside both A4 (186mm) and Letter (192mm) printable areas. */
+  .lp.guide .g-print .g-col { width: 180mm; max-width: 100%; margin-inline: auto; }
+  .lp.guide .g-print h2 { font-size: 24pt; }
+  .lp.guide .g-print .lede { font-size: 11pt; max-width: none; margin-top: 2mm; color: #444; }
+  .lp.guide .g-print .g-weeks { margin-top: 5mm; gap: 1.5mm 6mm; font-size: 10pt; }
+  .lp.guide .g-print .g-start { margin-top: 5mm; font-size: 11pt; }
+  .lp.guide .g-print .g-checklist { margin-top: 4mm; gap: 2.5mm; break-inside: avoid; }
+  .lp.guide .g-print .g-day label { height: 27mm; padding: 2.5mm; background: #fff; border: 0.3mm solid #1f1f1d; border-radius: 2mm; }
+  .lp.guide .g-print .g-day input { width: 6mm; height: 6mm; }
+  .lp.guide .g-print .g-day-num { font-size: 12pt; }
+  .lp.guide .g-print .g-day-week { display: block; font-size: 7pt; color: #555; }
+}

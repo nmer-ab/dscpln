@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Guide, GuideCta, GuideFaq, GuideHead, GuideMore, JsonLd } from "@/components/guide/guide";
+import { articleJsonLd, Guide, GuideCta, GuideFaq, GuideHead, GuideMore, JsonLd } from "@/components/guide/guide";
 
 const path = "/how-to-build-self-discipline";
 const title = "How to build self-discipline: 7 steps that work";
@@ -11,23 +11,6 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: path },
   openGraph: { type: "article", title, description, url: path, images: "/og.png" },
-};
-
-const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: title,
-  description,
-  image: "https://dscpln.app/og.png",
-  datePublished: "2026-11-06",
-  dateModified: "2026-11-06",
-  author: { "@type": "Organization", name: "dscpln", url: "https://dscpln.app" },
-  publisher: {
-    "@type": "Organization",
-    name: "dscpln",
-    logo: { "@type": "ImageObject", url: "https://dscpln.app/brand/app-icon-1024.png" },
-  },
-  mainEntityOfPage: `https://dscpln.app${path}`,
 };
 
 const steps: { id: string; title: string; body: string[]; example: string; tryToday: string }[] = [
@@ -152,7 +135,7 @@ const faqs = [
 export default function HowToBuildSelfDiscipline() {
   return (
     <Guide faqs={faqs}>
-      <JsonLd data={articleJsonLd} />
+      <JsonLd data={articleJsonLd({ path, title, description, published: "2026-11-06" })} />
       <GuideHead
         title={<>How to build self-discipline: <em>7 steps</em> that work</>}
         disclosure={false}

@@ -38,6 +38,32 @@ export function JsonLd({ data }: { data: object }) {
   );
 }
 
+/** Article structured data for the how-to guides. */
+export function articleJsonLd({ path, title, description, published, modified = published }: {
+  path: string;
+  title: string;
+  description: string;
+  published: string;
+  modified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    image: "https://dscpln.app/og.png",
+    datePublished: published,
+    dateModified: modified,
+    author: { "@type": "Organization", name: "dscpln", url: "https://dscpln.app" },
+    publisher: {
+      "@type": "Organization",
+      name: "dscpln",
+      logo: { "@type": "ImageObject", url: "https://dscpln.app/brand/app-icon-1024.png" },
+    },
+    mainEntityOfPage: `https://dscpln.app${path}`,
+  };
+}
+
 /** Page shell: the .lp scope from the home page plus the FAQPage JSON-LD. */
 export function Guide({ faqs, children }: { faqs: GuideFaqItem[]; children: ReactNode }) {
   const faqJsonLd = {
@@ -143,6 +169,11 @@ const guides = [
     href: "/how-to-build-self-discipline",
     title: "How to build self-discipline: 7 steps that work",
     text: "Practical steps for the days motivation doesn't show up, from starting small to never missing twice.",
+  },
+  {
+    href: "/30-day-discipline-challenge",
+    title: "The 30-day discipline challenge",
+    text: "One small rule a week for four weeks, with a printable checklist to keep you honest.",
   },
 ];
 
