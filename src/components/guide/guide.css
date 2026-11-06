@@ -39,11 +39,12 @@
 .lp.guide .g-facts dt { padding-top: 3px; font: 600 11.5px var(--lp-sans); letter-spacing: 1.4px; text-transform: uppercase; color: var(--lp-olive); }
 .lp.guide .g-facts dd { margin: 0; font-size: 15.5px; }
 
-/* related guide */
-.lp.guide .g-related-card { display: flex; flex-direction: column; gap: 6px; padding: 22px 24px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 18px; color: var(--lp-ink); text-decoration: none; transition: border-color 0.2s; }
-.lp.guide .g-related-card:hover { border-color: var(--lp-ink); }
-.lp.guide .g-related-card b { font: 600 22px/1.25 var(--lp-serif); letter-spacing: -0.2px; text-decoration: underline; text-decoration-color: var(--lp-lime); text-decoration-thickness: 3px; text-underline-offset: 4px; }
-.lp.guide .g-related-text { color: var(--lp-muted); font-size: 15.5px; }
+/* more guides */
+.lp.guide .g-more-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.lp.guide .g-more-card { display: flex; flex-direction: column; gap: 6px; padding: 22px 24px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 18px; color: var(--lp-ink); text-decoration: none; transition: border-color 0.2s; }
+.lp.guide .g-more-card:hover { border-color: var(--lp-ink); }
+.lp.guide .g-more-card b { font: 600 22px/1.25 var(--lp-serif); letter-spacing: -0.2px; text-decoration: underline; text-decoration-color: var(--lp-lime); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.lp.guide .g-more-text { color: var(--lp-muted); font-size: 15.5px; }
 
 /* faq + closing cta */
 .lp.guide .faq { padding-top: 88px; }

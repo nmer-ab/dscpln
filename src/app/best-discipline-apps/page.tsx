@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check, Guide, GuideAppSections, GuideCta, GuideFaq, GuideHead, GuideRelated, GuideTable, type GuideApp } from "@/components/guide/guide";
+import { Check, Guide, GuideAppSections, GuideCta, GuideFaq, GuideHead, GuideMore, GuideTable, type GuideApp } from "@/components/guide/guide";
 
 const title = "Best discipline apps in 2026";
 const description =
@@ -176,11 +176,7 @@ export default function BestDisciplineApps() {
 
       <GuideTable apps={apps} heading="The apps, side by side" />
       <GuideAppSections apps={apps} />
-      <GuideRelated
-        href="/fabulous-alternatives"
-        title="Best Fabulous alternatives in 2026"
-        text="Like the idea of Fabulous but want something simpler, more direct or widget-first? Here are the options."
-      />
+      <GuideMore current="/best-discipline-apps" />
       <GuideFaq faqs={faqs} />
       <GuideCta
         heading="Start with one habit tonight."

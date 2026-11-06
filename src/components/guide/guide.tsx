@@ -115,17 +115,44 @@ export function GuideAppSections({ apps }: { apps: GuideApp[] }) {
   ));
 }
 
-/** Cross-link to the other guide. */
-export function GuideRelated({ href, title, text }: { href: string; title: string; text: string }) {
+// Every guide. Each page lists the others under "More guides"; add new guides here.
+const guides = [
+  {
+    href: "/best-discipline-apps",
+    title: "Best discipline apps in 2026",
+    text: "A wider comparison of discipline and habit apps, from coaches and games to simple trackers.",
+  },
+  {
+    href: "/fabulous-alternatives",
+    title: "Best Fabulous alternatives in 2026",
+    text: "Like the idea of Fabulous but want something simpler, more direct or widget-first? Here are the options.",
+  },
+  {
+    href: "/habitica-alternatives",
+    title: "Best Habitica alternatives in 2026",
+    text: "Want less game, a calmer or more direct tone, or progress on your Home Screen? Here are the options.",
+  },
+];
+
+/** Cross-links to the other guides. `current` is this page's path. */
+export function GuideMore({ current }: { current: string }) {
   return (
-    <section className="g-related">
+    <section className="g-more">
       <div className="lp-wrap">
         <div className="g-col">
-          <Link href={href} className="g-related-card">
-            <span className="eyebrow">Related guide</span>
-            <b>{title}</b>
-            <span className="g-related-text">{text}</span>
-          </Link>
+          <h2 className="eyebrow">More guides</h2>
+          <ul className="g-more-list">
+            {guides
+              .filter((g) => g.href !== current)
+              .map((g) => (
+                <li key={g.href}>
+                  <Link href={g.href} className="g-more-card">
+                    <b>{g.title}</b>
+                    <span className="g-more-text">{g.text}</span>
+                  </Link>
+                </li>
+              ))}
+          </ul>
         </div>
       </div>
     </section>
