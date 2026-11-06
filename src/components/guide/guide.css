@@ -1,4 +1,4 @@
-/* /best-discipline-apps. Builds on landing.css (site v3); only adds what the home page doesn't have. */
+/* Comparison guides (/best-discipline-apps, /fabulous-alternatives). Builds on landing.css (site v3); only adds what the home page doesn't have. */
 .lp.guide .g-col { max-width: 760px; }
 .lp.guide section { padding-block: 64px 0; }
 
@@ -38,6 +38,12 @@
 .lp.guide .g-facts div { display: grid; grid-template-columns: 120px 1fr; gap: 14px; padding: 16px 18px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 14px; }
 .lp.guide .g-facts dt { padding-top: 3px; font: 600 11.5px var(--lp-sans); letter-spacing: 1.4px; text-transform: uppercase; color: var(--lp-olive); }
 .lp.guide .g-facts dd { margin: 0; font-size: 15.5px; }
+
+/* related guide */
+.lp.guide .g-related-card { display: flex; flex-direction: column; gap: 6px; padding: 22px 24px; background: var(--lp-card); border: 1px solid var(--lp-hair); border-radius: 18px; color: var(--lp-ink); text-decoration: none; transition: border-color 0.2s; }
+.lp.guide .g-related-card:hover { border-color: var(--lp-ink); }
+.lp.guide .g-related-card b { font: 600 22px/1.25 var(--lp-serif); letter-spacing: -0.2px; text-decoration: underline; text-decoration-color: var(--lp-lime); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.lp.guide .g-related-text { color: var(--lp-muted); font-size: 15.5px; }
 
 /* faq + closing cta */
 .lp.guide .faq { padding-top: 88px; }

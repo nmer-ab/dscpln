@@ -1,8 +1,5 @@
-/* eslint-disable @next/next/no-img-element -- static line-art SVGs, sized by CSS (same as the home page) */
 import type { Metadata } from "next";
-import { APP_STORE_URL } from "@/config/links";
-import "../landing.css";
-import "./guide.css";
+import { Check, Guide, GuideAppSections, GuideCta, GuideFaq, GuideHead, GuideRelated, GuideTable, type GuideApp } from "@/components/guide/guide";
 
 const title = "Best discipline apps in 2026";
 const description =
@@ -14,14 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/best-discipline-apps" },
   openGraph: { title, description, url: "/best-discipline-apps", images: "/og.png" },
 };
-
-function Check() {
-  return (
-    <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12.5l4.5 4.5L19 7.5" />
-    </svg>
-  );
-}
 
 const criteria = [
   {
@@ -42,17 +31,7 @@ const criteria = [
   },
 ];
 
-type App = {
-  id: string;
-  name: string;
-  bestFor: string;
-  platforms: string;
-  about: string[];
-  bestForLong: string;
-  limitation: string;
-};
-
-const apps: App[] = [
+const apps: GuideApp[] = [
   {
     id: "dscpln",
     name: "dscpln",
@@ -166,42 +145,16 @@ const faqs = [
   },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
-
 export default function BestDisciplineApps() {
   return (
-    <div className="lp guide">
-      <script
-        type="application/ld+json"
-        // Escape "<" so the payload can't close the script tag.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
+    <Guide faqs={faqs}>
+      <GuideHead
+        title={<>Best discipline apps in <em>2026</em></>}
+        intro={[
+          "Discipline isn't about willpower on your best day. It's about what you do on an ordinary Tuesday when you'd rather not. The right app makes that day a little easier: it reminds you, keeps score, and gives you a reason to show up.",
+          "We looked at the apps people mention most when they talk about building discipline, and wrote down what each one is good at, who it suits, and where it falls short.",
+        ]}
       />
-
-      <header className="g-head">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <span className="eyebrow">Guide</span>
-            <h1>
-              Best discipline apps in <em>2026</em>
-            </h1>
-            <p className="lede">
-              Discipline isn&apos;t about willpower on your best day. It&apos;s about what you do on an ordinary Tuesday when you&apos;d rather not. The right app makes that day a little easier: it reminds you, keeps score, and gives you a reason to show up.
-            </p>
-            <p className="lede">
-              We looked at the apps people mention most when they talk about building discipline, and wrote down what each one is good at, who it suits, and where it falls short.
-            </p>
-            <p className="disclose"><b>Disclosure</b> We make dscpln.</p>
-          </div>
-        </div>
-      </header>
 
       <section id="how-we-picked">
         <div className="lp-wrap">
@@ -221,80 +174,18 @@ export default function BestDisciplineApps() {
         </div>
       </section>
 
-      <section id="at-a-glance">
-        <div className="lp-wrap">
-          <div className="g-col">
-            <span className="eyebrow">At a glance</span>
-            <h2>The apps, side by side</h2>
-          </div>
-          <div className="g-table" role="region" aria-label="Comparison table" tabIndex={0}>
-            <table>
-              <thead>
-                <tr><th scope="col">App</th><th scope="col">Best for</th><th scope="col">Platforms</th></tr>
-              </thead>
-              <tbody>
-                {apps.map((app) => (
-                  <tr key={app.id}>
-                    <th scope="row"><a href={`#${app.id}`}>{app.name}</a></th>
-                    <td>{app.bestFor}</td>
-                    <td>{app.platforms}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {apps.map((app, i) => (
-        <section key={app.id} id={app.id} className="g-app">
-          <div className="lp-wrap">
-            <div className="g-col">
-              <div className="g-app-head">
-                <span className={`g-rank${i === 0 ? " first" : ""}`} aria-hidden="true">{i + 1}</span>
-                <h2>{app.name}</h2>
-              </div>
-              {app.about.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
-              <dl className="g-facts">
-                <div><dt>Best for</dt><dd>{app.bestForLong}</dd></div>
-                <div><dt>Limitation</dt><dd>{app.limitation}</dd></div>
-              </dl>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      <section className="faq" id="faq">
-        <div className="lp-wrap">
-          <div><span className="eyebrow">FAQ</span><h2>Questions, answered.</h2></div>
-          <div>
-            {faqs.map((f) => (
-              <details key={f.q}>
-                <summary>{f.q}<span className="pm" aria-hidden="true" /></summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="cta-band" id="download">
-        <div className="lp-wrap">
-          <div className="cta-box">
-            <div>
-              <h2>Start with one habit tonight.</h2>
-              <p className="lede">dscpln keeps your streak in sight and Milo one message away. The yearly plan starts with a free trial.</p>
-              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="g-badge">
-                {/* Official black badge; viewBox is 119.66 × 40 */}
-                <img src="/badges/app-store.svg" alt="Download dscpln on the App Store" width={132} height={44} />
-              </a>
-            </div>
-            <div className="cta-side">
-              <div className="cta-milo"><img src="/milo-v3/milo-wave.svg" alt="" width={188} height={292} /></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      <GuideTable apps={apps} heading="The apps, side by side" />
+      <GuideAppSections apps={apps} />
+      <GuideRelated
+        href="/fabulous-alternatives"
+        title="Best Fabulous alternatives in 2026"
+        text="Like the idea of Fabulous but want something simpler, more direct or widget-first? Here are the options."
+      />
+      <GuideFaq faqs={faqs} />
+      <GuideCta
+        heading="Start with one habit tonight."
+        text="dscpln keeps your streak in sight and Milo one message away. The yearly plan starts with a free trial."
+      />
+    </Guide>
   );
 }
