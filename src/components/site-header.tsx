@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { APP_STORE_URL } from "@/config/links";
 import { mainNav } from "@/lib/nav";
 import { MobileMenu } from "./mobile-menu";
 import { Wordmark } from "./wordmark";
@@ -24,12 +25,14 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link
-          href="/#download"
+        <a
+          href={APP_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden h-11 items-center justify-self-end rounded-xl bg-ink px-5 text-[15px] font-semibold text-white transition-colors hover:bg-[#3a3a37] lg:inline-flex"
         >
           Get the app
-        </Link>
+        </a>
         <MobileMenu />
       </div>
     </header>

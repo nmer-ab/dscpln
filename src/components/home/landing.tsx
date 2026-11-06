@@ -60,7 +60,7 @@ function Hero() {
           <p className="lede">
             Pick one or two habits. Tick them off every day and watch your streak grow. When motivation drops, Milo, your coach, is one message away.
           </p>
-          <StoreBadges size="lg" className="hero-badges" />
+          <StoreBadges size="sm" className="hero-badges" />
         </div>
         <div className="hero-art">
           <img className="hero-milo" src="/milo-v3/milo-cheer.svg" alt="" width={188} height={292} />
@@ -275,7 +275,7 @@ function FinalCta() {
           <div>
             <h2>Stop waiting to feel ready.</h2>
             <p className="lede">Pick one habit tonight. Tick it off tomorrow morning.</p>
-            <StoreBadges size="lg" className="cta-badges" />
+            <StoreBadges size="sm" className="cta-badges" />
           </div>
           <div className="cta-side">
             <figure className="qr">
