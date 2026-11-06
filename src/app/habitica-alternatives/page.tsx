@@ -92,11 +92,11 @@ const faqs = [
   },
   {
     q: "Can I still keep habits with friends?",
-    a: "Habitica's parties are hard to replace, and most of the apps here are built for one person. If accountability with friends matters to you, pair a solo tracker with a simple check-in, like sending a friend your streak at the end of each week.",
+    a: "Habitica is the most social option here, with parties and shared quests. Finch lets you add friends and send each other encouragement. dscpln, Streaks, Fabulous and Productive focus on you alone.",
   },
   {
     q: "Can I move my habits from Habitica to another app?",
-    a: "Habit apps don't share a common format, so the easiest way is to set up the habits that matter by hand in the new app. It's also a good moment to keep only the habits you actually do.",
+    a: "Habitica lets you export your data from its settings, but the apps on this page don't import it, so you set your habits up again by hand. With a few habits, that takes minutes.",
   },
 ];
 
