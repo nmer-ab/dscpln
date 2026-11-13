@@ -74,7 +74,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-11 flex justify-between gap-2 border-t border-white/12 pt-5 text-[13px] text-white/50 max-sm:flex-col">
-          <span>© 2026 dscpln · TechLoops</span>
+          <span>© 2026 dscpln · operated by TechLoops, Clermont-Ferrand, France</span>
           <span>Made for people who quit on bad days</span>
         </div>
       </div>

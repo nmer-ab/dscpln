@@ -10,7 +10,7 @@
 .lp .hub a:focus-visible,
 .lp .hub button:focus-visible { outline: 2px solid var(--lp-olive); outline-offset: 3px; }
 .lp .hub .hub-sec { padding-block: 0; margin-top: 72px; }
-.lp .hub .hub-wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+.lp .hub .hub-wrap { max-width: 1240px; margin: 0 auto; padding-inline: 24px; }
 
 .lp .hub-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
 .lp .hub-head h2 { font: 700 34px/1.1 var(--hub-serif); letter-spacing: -0.8px; }

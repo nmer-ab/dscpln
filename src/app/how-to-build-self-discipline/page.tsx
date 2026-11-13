@@ -139,7 +139,7 @@ export default function HowToBuildSelfDiscipline() {
       path={path}
       title={title}
       faqs={faqs}
-      jsonLd={articleJsonLd({ path, title, description, published: "2026-11-06" })}
+      jsonLd={articleJsonLd({ path, title, description, published: "2026-11-12" })}
       toc={steps.map((step, i) => ({ id: step.id, label: `${i + 1}. ${step.title}` }))}
       intro={[
         "Motivation is a feeling, and feelings come and go. It shows up on a fresh Monday or after a good video, and it's often gone by Thursday.",

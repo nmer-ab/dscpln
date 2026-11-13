@@ -26,4 +26,5 @@ export const siteNav = [
   { label: "Support", href: "/support" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
+  { label: "Delete account", href: "/delete-account" },
 ];

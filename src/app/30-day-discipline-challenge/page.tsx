@@ -105,7 +105,7 @@ export default function ThirtyDayChallenge() {
       path={path}
       title={title}
       faqs={faqs}
-      jsonLd={articleJsonLd({ path, title, description, published: "2026-11-06" })}
+      jsonLd={articleJsonLd({ path, title, description, published: "2026-11-11" })}
       toc={[
         ...weeks.map((week) => ({ id: week.id, label: week.title })),
         { id: "checklist", label: "Your 30-day checklist" },
