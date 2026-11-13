@@ -60,7 +60,9 @@ function Hero() {
         </h1>
         <p className="hero-sub">and keep the small promises you make to yourself.</p>
         <p className="hero-small">
-          dscpln is an iPhone app that helps you build daily discipline with habits, streaks, a daily line and an AI coach.
+          iPhone app for building daily discipline. Pick one or two small habits, keep a streak, and get a new motivation
+          or discipline line every morning on your Home Screen widget. Includes Milo, an AI coach for the days you
+          don&apos;t feel like it, plus three short reads a day. 3-day free trial on the yearly plan.
         </p>
         <a className="hero-dl" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
           <svg width="15" height="18" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">

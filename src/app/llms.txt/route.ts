@@ -15,9 +15,7 @@ export function GET() {
 
   const body = `# dscpln
 
-> dscpln is an iPhone app for daily discipline. It combines habits and streaks, a new motivation and discipline line every morning, Home Screen widgets, Milo the AI coach, and three short reads a day.
-
-dscpln is for people who want to keep the small promises they make to themselves: building habits, staying consistent on hard days and showing up without waiting for motivation.
+> iPhone app for building daily discipline. Pick one or two small habits, keep a streak, and get a new motivation or discipline line every morning on your Home Screen widget. Includes Milo, an AI coach for the days you don't feel like it, plus three short reads a day. 3-day free trial on the yearly plan.
 
 ## Pricing
 

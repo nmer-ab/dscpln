@@ -18,7 +18,7 @@ const inter = Inter({
 
 const title = "dscpln: Daily Discipline";
 const description =
-  "Pick one or two habits, build a streak you'll want to protect, and get a coach when motivation drops.";
+  "iPhone app for building daily discipline. Pick one or two small habits, keep a streak, and get a new motivation or discipline line every morning on your Home Screen widget. Includes Milo, an AI coach for the days you don't feel like it, plus three short reads a day. 3-day free trial on the yearly plan.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dscpln.app"),
