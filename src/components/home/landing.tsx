@@ -4,6 +4,7 @@ import { MonoD } from "@/components/mono-d";
 import { StoreBadges } from "@/components/store-badges";
 import { APP_STORE_URL } from "@/config/links";
 import { serifDisplay } from "@/lib/fonts";
+import { Hub } from "./hub";
 
 function Check({ size = 14 }: { size?: number }) {
   return (
@@ -312,6 +313,7 @@ export function Landing() {
     <div className="lp">
       <Hero />
       <Landscape />
+      <Hub />
       <Features />
       <HowItWorks />
       <Widgets />

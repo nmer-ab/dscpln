@@ -121,6 +121,8 @@ export type CoverSpec = { color: CoverColor; pose: MiloPose; circle?: boolean; l
 export type GuideLink = {
   href: string;
   title: string;
+  /** Short label for the site footer. Falls back to `title`. */
+  short?: string;
   text: string;
   tag?: string;
   /** Shown as the tag and in the breadcrumb. */
@@ -139,6 +141,7 @@ export const guides: GuideLink[] = [
   {
     href: "/best-discipline-apps",
     title: "Best discipline apps in 2026",
+    short: "Best discipline apps",
     text: "A wider comparison of discipline and habit apps, from coaches and games to simple trackers.",
     category: "Comparison",
     published: "2026-11-06",
@@ -149,6 +152,7 @@ export const guides: GuideLink[] = [
   {
     href: "/fabulous-alternatives",
     title: "Best Fabulous alternatives in 2026",
+    short: "Fabulous alternatives",
     text: "Like the idea of Fabulous but want something simpler, more direct or widget-first? Here are the options.",
     category: "Comparison",
     published: "2026-11-06",
@@ -159,6 +163,7 @@ export const guides: GuideLink[] = [
   {
     href: "/habitica-alternatives",
     title: "Best Habitica alternatives in 2026",
+    short: "Habitica alternatives",
     text: "Want less game, a calmer or more direct tone, or progress on your Home Screen? Here are the options.",
     category: "Comparison",
     published: "2026-11-06",
@@ -169,6 +174,7 @@ export const guides: GuideLink[] = [
   {
     href: "/how-to-build-self-discipline",
     title: "How to build self-discipline: 7 steps that work",
+    short: "Self-discipline guide",
     text: "Practical steps for the days motivation doesn't show up, from starting small to never missing twice.",
     category: "Discipline",
     published: "2026-11-06",
@@ -179,6 +185,7 @@ export const guides: GuideLink[] = [
   {
     href: "/30-day-discipline-challenge",
     title: "The 30-day discipline challenge",
+    short: "30-day challenge",
     text: "One small rule a week for four weeks, with a printable checklist to keep you honest.",
     category: "Guide",
     published: "2026-11-06",
@@ -189,6 +196,7 @@ export const guides: GuideLink[] = [
   {
     href: "/discipline-quote-generator",
     title: "Discipline quote generator",
+    short: "Quote generator",
     text: "60 original short lines on discipline and motivation. Copy one or save it for your Stories.",
     tag: "Free tool",
     category: "Free tool",
@@ -200,6 +208,7 @@ export const guides: GuideLink[] = [
   {
     href: "/best-motivation-widgets-iphone",
     title: "Best motivation widgets for iPhone in 2026",
+    short: "Motivation widgets",
     text: "Quotes, affirmations, streaks or your own words: the widgets worth a spot on your Home Screen.",
     category: "Comparison",
     published: "2026-11-06",

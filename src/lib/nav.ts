@@ -19,3 +19,11 @@ export const legalNav = [
   { label: "Delete account", href: "/delete-account" },
   { label: "Support", href: "/support" },
 ];
+
+// The "dscpln" column of the site footer.
+export const siteNav = [
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Support", href: "/support" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+];
