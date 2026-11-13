@@ -33,7 +33,7 @@ export function QuoteOfTheDay({ lines, buildDay }: { lines: DailyLine[]; buildDa
   async function save() {
     setBusy(true);
     try {
-      if ((await saveStory(line.text, line.name, "lime")) === "downloaded") flash("Image saved");
+      if ((await saveStory(line.text, line.name, "ink")) === "downloaded") flash("Image saved");
     } catch {
       flash("Couldn't create the image");
     } finally {
@@ -51,13 +51,13 @@ export function QuoteOfTheDay({ lines, buildDay }: { lines: DailyLine[]; buildDa
           <p>{line.text}</p>
         </blockquote>
         <div className="hub-btns">
-          <button type="button" className="hub-b hub-b-ink" onClick={() => copyText(line.text).then(() => flash("Copied"))}>
+          <button type="button" className="hub-b hub-b-white" onClick={() => copyText(line.text).then(() => flash("Copied"))}>
             Copy
           </button>
-          <button type="button" className="hub-b hub-b-white" onClick={save} disabled={busy}>
+          <button type="button" className="hub-b hub-b-ghost" onClick={save} disabled={busy}>
             Save for Stories
           </button>
-          <Link href={`/quotes/${line.slug}`} className="hub-b hub-b-white">
+          <Link href={`/quotes/${line.slug}`} className="hub-b hub-b-ghost">
             More {line.name.toLowerCase()} quotes →
           </Link>
           <span className="hub-status" role="status">{status}</span>

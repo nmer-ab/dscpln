@@ -112,7 +112,7 @@ export function GuideHead({ title, intro, disclosure = true, eyebrow = "Guide" }
   );
 }
 
-export type CoverColor = "lime" | "ink" | "olive" | "sand";
+export type CoverColor = "soft" | "ink" | "stone";
 /** A file in /public/milo-v3/, without "milo-" and ".svg". */
 export type MiloPose = "cheer" | "clipboard" | "flex" | "idle" | "think" | "wave";
 /** An article cover, drawn in code (see cover.tsx). `circle` adds a soft circle, `line` a small white line card. */
@@ -146,7 +146,7 @@ export const guides: GuideLink[] = [
     category: "Comparison",
     published: "2026-11-10",
     readMinutes: 7,
-    cover: { color: "sand", pose: "cheer", line: "Start small. Start now." },
+    cover: { color: "stone", pose: "cheer", line: "Start small. Start now." },
     related: ["/fabulous-alternatives", "/habitica-alternatives", "/how-to-build-self-discipline"],
   },
   {
@@ -157,7 +157,7 @@ export const guides: GuideLink[] = [
     category: "Comparison",
     published: "2026-11-06",
     readMinutes: 5,
-    cover: { color: "olive", pose: "clipboard", circle: true },
+    cover: { color: "ink", pose: "clipboard", circle: true },
     related: ["/habitica-alternatives", "/best-discipline-apps", "/best-motivation-widgets-iphone"],
   },
   {
@@ -168,7 +168,7 @@ export const guides: GuideLink[] = [
     category: "Comparison",
     published: "2026-11-06",
     readMinutes: 5,
-    cover: { color: "lime", pose: "idle", line: "Small steps. No speeches." },
+    cover: { color: "soft", pose: "idle", line: "Small steps. No speeches." },
     related: ["/fabulous-alternatives", "/best-discipline-apps", "/30-day-discipline-challenge"],
   },
   {
@@ -179,7 +179,7 @@ export const guides: GuideLink[] = [
     category: "Discipline",
     published: "2026-11-12",
     readMinutes: 8,
-    cover: { color: "lime", pose: "flex", circle: true, line: "One rep. Then decide." },
+    cover: { color: "soft", pose: "flex", circle: true, line: "One rep. Then decide." },
     related: ["/30-day-discipline-challenge", "/best-discipline-apps", "/quotes/stoic"],
   },
   {
@@ -202,7 +202,7 @@ export const guides: GuideLink[] = [
     category: "Free tool",
     published: "2026-11-06",
     readMinutes: 2,
-    cover: { color: "sand", pose: "wave", line: "Feelings are opinions, not instructions." },
+    cover: { color: "stone", pose: "wave", line: "Feelings are opinions, not instructions." },
     related: ["/quotes/discipline", "/quotes/motivation", "/best-motivation-widgets-iphone"],
   },
   {
@@ -219,9 +219,9 @@ export const guides: GuideLink[] = [
 ];
 
 const quoteCovers: Record<string, CoverSpec> = {
-  discipline: { color: "lime", pose: "flex", line: "Motivation is a guest. Discipline lives here." },
-  motivation: { color: "sand", pose: "cheer", line: "Small progress is still progress. Count it." },
-  stoic: { color: "olive", pose: "wave", circle: true },
+  discipline: { color: "soft", pose: "flex", line: "Motivation is a guest. Discipline lives here." },
+  motivation: { color: "stone", pose: "cheer", line: "Small progress is still progress. Count it." },
+  stoic: { color: "ink", pose: "wave", circle: true },
 };
 
 const words = (texts: string[]) => texts.join(" ").split(/\s+/).filter(Boolean).length;

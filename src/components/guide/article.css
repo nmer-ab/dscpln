@@ -19,7 +19,7 @@
 
 /* title block */
 .lp.guide.ar .ar-top { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; margin-top: 18px; }
-.lp.guide.ar .ar-tag { display: inline-block; background: var(--lp-lime); color: var(--lp-ink); font: 600 12px var(--lp-sans); letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 8px; }
+.lp.guide.ar .ar-tag { display: inline-block; background: var(--lp-soft); color: var(--lp-ink); font: 600 12px var(--lp-sans); letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 8px; }
 .lp.guide.ar h1 { margin-top: 14px; font: 700 50px/1.06 var(--lp-serif); letter-spacing: -1.4px; text-wrap: wrap; }
 .lp.guide.ar .ar-lede { margin: 16px 0 0; font: 400 18px/1.55 var(--lp-sans); color: rgba(31, 31, 29, 0.72); }
 .lp.guide.ar .disclose { margin-top: 18px; }
@@ -35,21 +35,20 @@
 .lp.guide.ar .ar-btn.ink:hover { background: #3a3a37; }
 .lp.guide.ar .ar-btn.ghost { background: transparent; color: var(--lp-muted); border: 1.5px solid var(--lp-hair); }
 .lp.guide.ar .ar-btn.ghost:hover { border-color: var(--lp-ink); }
-.lp.guide.ar .ar-btn.ghost[aria-pressed="true"] { background: var(--lp-lime); border-color: var(--lp-lime); }
+.lp.guide.ar .ar-btn.ghost[aria-pressed="true"] { background: var(--lp-ink); border-color: var(--lp-ink); color: #fff; }
 .lp.guide.ar .ar-btn.white { background: #fff; color: var(--lp-ink); }
 
 /* cover (cover.tsx) */
 .lp.guide.ar .ar-cover { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 3; display: flex; align-items: flex-end; justify-content: center; }
-.lp.guide.ar .ar-cover.lime { background: var(--lp-lime); }
+.lp.guide.ar .ar-cover.soft { background: var(--lp-soft); }
 .lp.guide.ar .ar-cover.ink { background: var(--lp-ink); }
-.lp.guide.ar .ar-cover.olive { background: var(--lp-olive); }
-.lp.guide.ar .ar-cover.sand { background: #e6e3d8; }
+.lp.guide.ar .ar-cover.stone { background: #e8e8e5; }
 .lp.guide.ar .ar-cover-milo { position: relative; z-index: 1; height: 78%; width: auto; max-width: none; margin-bottom: 6%; }
 .lp.guide.ar .ar-cover-ground { position: absolute; left: 18%; right: 18%; bottom: 7%; height: 2px; background: var(--lp-ink); border-radius: 2px; }
 .lp.guide.ar .ar-cover-sun { position: absolute; width: 46%; aspect-ratio: 1; border-radius: 50%; top: 12%; right: -6%; background: rgba(255, 255, 255, 0.35); }
-.lp.guide.ar .ar-cover.ink .ar-cover-sun { background: rgba(200, 226, 106, 0.25); }
-.lp.guide.ar .ar-cover.olive .ar-cover-sun { background: rgba(200, 226, 106, 0.3); }
-.lp.guide.ar .ar-cover.sand .ar-cover-sun { background: rgba(255, 255, 255, 0.5); }
+.lp.guide.ar .ar-cover.ink .ar-cover-sun { background: rgba(255, 255, 255, 0.12); }
+.lp.guide.ar .ar-cover.soft .ar-cover-sun,
+.lp.guide.ar .ar-cover.stone .ar-cover-sun { background: rgba(255, 255, 255, 0.6); }
 .lp.guide.ar .ar-cover-card { position: absolute; left: 8%; top: 10%; width: 42%; background: #fff; color: var(--lp-ink); border-radius: 14px; padding: 10px 12px; font: 600 14px/1.2 var(--lp-serif); box-shadow: 0 10px 24px rgba(31, 31, 29, 0.14); rotate: -6deg; }
 
 /* body */
@@ -63,7 +62,7 @@
 .lp.guide.ar .ar-main > p,
 .lp.guide.ar .ar-sec > p { font: 400 17px/1.7 var(--lp-sans); color: rgba(31, 31, 29, 0.86); margin: 12px 0 0; max-width: none; }
 .lp.guide.ar .ar-main > p a,
-.lp.guide.ar .ar-sec > p a { color: var(--lp-ink); text-decoration: underline; text-decoration-color: var(--lp-olive); text-underline-offset: 3px; }
+.lp.guide.ar .ar-sec > p a { color: var(--lp-ink); text-decoration: underline; text-decoration-color: var(--lp-label); text-underline-offset: 3px; }
 /* Section wrappers from the shared blocks (GuideHomeScreen) span the column here. */
 .lp.guide.ar .ar-main .lp-wrap { padding: 0; max-width: none; }
 .lp.guide.ar .ar-main .g-col { max-width: none; }
@@ -71,25 +70,25 @@
 .lp.guide.ar .ar-main .g-table { margin-top: 16px; }
 
 /* quote block and note boxes */
-.lp.guide.ar .ar-q { margin: 14px 0 0; background: #fff; border-radius: 16px; border-left: 4px solid var(--lp-lime); padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.lp.guide.ar .ar-q { margin: 14px 0 0; background: #fff; border-radius: 16px; border-left: 4px solid var(--lp-ink); padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 .lp.guide.ar .ar-q blockquote { margin: 0; font: 600 19px/1.4 var(--lp-serif); }
 .lp.guide.ar .ar-q figcaption { font: 500 12px var(--lp-sans); color: var(--lp-muted); white-space: nowrap; }
 .lp.guide.ar .ar-notes { margin: 16px 0 0; display: flex; flex-direction: column; gap: 10px; }
-.lp.guide.ar .ar-note { background: rgba(200, 226, 106, 0.35); border-radius: 14px; padding: 12px 16px; font: 500 15px/1.5 var(--lp-sans); }
+.lp.guide.ar .ar-note { background: var(--lp-soft); border-radius: 14px; padding: 12px 16px; font: 500 15px/1.5 var(--lp-sans); }
 .lp.guide.ar .ar-note.plain { background: #fff; padding: 11px 15px; border: 1px solid var(--lp-hair); }
-.lp.guide.ar .ar-note dt { display: inline; font-weight: 700; color: var(--lp-olive); }
+.lp.guide.ar .ar-note dt { display: inline; font-weight: 700; color: var(--lp-label); }
 .lp.guide.ar .ar-note dt::after { content: ":"; }
 .lp.guide.ar .ar-note dd { display: inline; margin: 0 0 0 0.3em; }
 
 /* app banner */
 .lp.guide.ar .ar-promo { margin-top: 36px; background: var(--lp-ink); color: #fff; border-radius: 24px; padding: 26px; display: grid; grid-template-columns: 1fr 150px; gap: 16px; align-items: center; overflow: hidden; }
-.lp.guide.ar .ar-promo small { display: block; font: 600 11px var(--lp-sans); letter-spacing: 1px; text-transform: uppercase; color: var(--lp-lime); }
+.lp.guide.ar .ar-promo small { display: block; font: 600 11px var(--lp-sans); letter-spacing: 1px; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); }
 .lp.guide.ar .ar-promo-title { margin: 8px 0 0; font: 700 26px/1.15 var(--lp-serif); }
 .lp.guide.ar .ar-promo p:not(.ar-promo-title) { margin: 12px 0 0; font: 400 15px/1.7 var(--lp-sans); color: rgba(255, 255, 255, 0.7); }
 .lp.guide.ar .ar-promo .ar-btn { margin-top: 16px; }
 .lp.guide.ar .ar-tile { position: relative; justify-self: center; width: 110px; height: 110px; border-radius: 30px; background: #2c2c29; display: flex; align-items: center; justify-content: center; rotate: -10deg; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35); }
 .lp.guide.ar .ar-tile .ar-mono { width: 56px; height: auto; }
-.lp.guide.ar .ar-tile i { position: absolute; right: 26px; bottom: 30px; width: 13px; height: 13px; border-radius: 50%; background: var(--lp-lime); }
+.lp.guide.ar .ar-tile i { position: absolute; right: 26px; bottom: 30px; width: 13px; height: 13px; border-radius: 50%; background: #fff; }
 
 /* FAQ accordion */
 .lp.guide.ar .ar-faq h2 { margin-bottom: 22px; }
@@ -115,7 +114,7 @@
 .lp.guide.ar .ar-toc ol { list-style: none; margin: 0; padding: 0; }
 .lp.guide.ar .ar-toc a { display: block; padding: 7px 10px; border-radius: 10px; font: 400 13px/1.35 var(--lp-sans); color: var(--lp-muted); text-decoration: none; }
 .lp.guide.ar .ar-toc a:hover { color: var(--lp-ink); }
-.lp.guide.ar .ar-toc a[aria-current] { background: var(--lp-lime); color: var(--lp-ink); font-weight: 600; }
+.lp.guide.ar .ar-toc a[aria-current] { background: var(--lp-ink); color: #fff; font-weight: 600; }
 .lp.guide.ar .ar-wall { margin-top: 16px; background: #fff; border: 1px solid var(--lp-hair); border-radius: 20px; padding: 16px; }
 .lp.guide.ar .ar-wall-title { margin: 0; font: 700 17px/1.3 var(--lp-serif); }
 .lp.guide.ar .ar-wall p:not(.ar-wall-title) { margin: 6px 0 12px; font-size: 13px; color: var(--lp-muted); }
@@ -130,7 +129,7 @@
 .lp.guide.ar .ar-card .ar-cover-card { width: 34%; left: 5%; top: 9%; font-size: 12px; }
 .lp.guide.ar .ar-card .ar-cover-milo { height: 72%; }
 .lp.guide.ar .ar-card-t { padding: 14px 16px 16px; }
-.lp.guide.ar .ar-card-t small { font: 600 11px var(--lp-sans); letter-spacing: 0.6px; text-transform: uppercase; color: var(--lp-olive); }
+.lp.guide.ar .ar-card-t small { font: 600 11px var(--lp-sans); letter-spacing: 0.6px; text-transform: uppercase; color: var(--lp-label); }
 .lp.guide.ar .ar-card-t b { display: block; margin-top: 6px; font: 700 19px/1.2 var(--lp-serif); }
 .lp.guide.ar .ar-card-t span { display: block; margin-top: 8px; font-size: 12.5px; color: var(--lp-muted); }
 

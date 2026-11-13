@@ -1,11 +1,11 @@
 // Browser-only helpers shared by the quote generator and the /quotes line cards:
 // copy a line, and save it as a 1080×1920 Stories image.
 
-export type StoryTheme = "lime" | "ink";
+export type StoryTheme = "light" | "ink";
 
 const colors = {
-  lime: { bg: "#c8e26a", text: "#1f1f1d", accent: "#3d4a12" },
-  ink: { bg: "#1f1f1d", text: "#fbfaf7", accent: "#c8e26a" },
+  light: { bg: "#f4f4f2", text: "#1f1f1d", accent: "rgba(31, 31, 29, 0.55)" },
+  ink: { bg: "#1f1f1d", text: "#ffffff", accent: "rgba(255, 255, 255, 0.55)" },
 };
 
 /** Draws the card as a 1080×1920 Stories image, in the page's own fonts. */

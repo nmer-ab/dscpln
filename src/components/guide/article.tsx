@@ -187,7 +187,7 @@ export function ArticleNotes({ notes }: { notes: { label: string; text: ReactNod
   );
 }
 
-/** A quote block with a lime left border and an optional label on the right. */
+/** A quote block with an ink left border and an optional label on the right. */
 export function ArticleQuote({ label, children }: { label?: string; children: ReactNode }) {
   return (
     <figure className="ar-q">

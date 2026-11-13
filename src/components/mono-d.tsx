@@ -1,4 +1,4 @@
-/** The "d" from the wordmark, in white for the dark tiles. Pair it with a lime dot in place of the wordmark's period. */
+/** The "d" from the wordmark, in white for the dark tiles. Pair it with a white dot in place of the wordmark's period. */
 export function MonoD({ className }: { className?: string }) {
   return (
     <svg viewBox="3.6 -69.7 85.9 70.8" className={className} aria-hidden="true">

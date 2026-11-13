@@ -14,7 +14,7 @@ export default function NotFound() {
       <h1 className="mt-6 font-syne text-[40px] leading-[1.1] font-bold text-ink">Page not found</h1>
       <Link
         href="/"
-        className="mt-8 inline-flex h-14 items-center rounded-[10px] bg-green px-7 text-[19px] font-semibold text-white transition-colors hover:bg-[#317339]"
+        className="mt-8 inline-flex h-14 items-center rounded-[10px] bg-ink px-7 text-[19px] font-semibold text-white transition-colors hover:bg-[#3a3a37]"
       >
         Back home
       </Link>

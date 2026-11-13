@@ -12,10 +12,10 @@ import "./hub.css";
 // Icon tile per quote category. A new category gets the fallback until it's added here.
 const categoryIcons: Record<string, { color: CoverColor; pose: MiloPose }> = {
   discipline: { color: "ink", pose: "flex" },
-  motivation: { color: "lime", pose: "cheer" },
-  stoic: { color: "olive", pose: "think" },
+  motivation: { color: "soft", pose: "cheer" },
+  stoic: { color: "ink", pose: "think" },
 };
-const iconFor = (slug: string) => categoryIcons[slug] ?? { color: "lime" as const, pose: "idle" as const };
+const iconFor = (slug: string) => categoryIcons[slug] ?? { color: "soft" as const, pose: "idle" as const };
 
 // Every quote line, taking one from each category in turn so the category changes every day.
 const longest = Math.max(...quoteCategories.map((c) => c.lines.length));
@@ -124,7 +124,7 @@ export function Hub() {
                 <b>{generator.title}</b>
                 <span>{generator.text}</span>
               </span>
-              <span className="hub-b hub-b-lime">Open the generator →</span>
+              <span className="hub-b hub-b-tool">Open the generator →</span>
             </Link>
             <div className="hub-tool light">
               <div>

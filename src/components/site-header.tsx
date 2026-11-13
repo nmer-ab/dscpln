@@ -12,16 +12,16 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label="dscpln home"
-          className="relative flex size-[30px] items-center justify-center rounded-[9px] bg-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-green"
+          className="relative flex size-[30px] items-center justify-center rounded-[9px] bg-ink focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-ink"
         >
           <MonoD className="h-auto w-[17px]" />
-          <i className="absolute right-1.5 bottom-2 size-[5px] rounded-full bg-lime" />
+          <i className="absolute right-1.5 bottom-2 size-[5px] rounded-full bg-white" />
         </Link>
         {mainNav.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="rounded-md text-ink transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-green"
+            className="rounded-md text-ink transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-ink"
           >
             {item.label}
           </Link>

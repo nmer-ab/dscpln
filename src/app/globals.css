@@ -1,31 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #fbfaf7;
+  --color-bg: #ffffff;
   --color-ink: #1f1f1d;
   --color-muted: #6b675f;
-  --color-lime: #c8e26a;
-  --color-green: #3d4a12;
+  --color-soft: #f4f4f2;
+  /* Labels and secondary accents: ink at 55%. */
+  --color-label: rgba(31, 31, 29, 0.55);
   --color-sky: #cfe3f2;
   --color-peach: #f5d6cb;
   --color-card: #f4f2ee;
   --color-line: #d8d4cd;
 
-  --color-hero: #fbfaf7;
-  --color-alt: #fbfaf7;
-  --color-pill: #eef5d6;
-  --color-faq: #fbfaf7;
-  --color-footer: #fbfaf7;
+  --color-hero: #ffffff;
+  --color-alt: #ffffff;
+  --color-pill: #f4f4f2;
+  --color-faq: #ffffff;
+  --color-footer: #ffffff;
   --color-border: #e3e1dc;
   --color-sub: #4a4741;
 
   /* Dark (#1F1F1D) sections */
-  --color-dark-pill: #2e3a14;
+  --color-dark-pill: #33332f;
   --color-dark-muted: #a8a49c;
   --color-dark-line: #33332f;
 
-  /* Accent text is always green. Never use lime for text on light backgrounds. */
-  --color-accent: var(--color-green);
+  /* White, no-colour palette: accents are ink or ink at 55%. */
+  --color-accent: var(--color-label);
 
   --animate-float: float 4s ease-in-out infinite;
 
@@ -114,12 +115,12 @@ html {
   }
   a {
     text-decoration: underline;
-    text-decoration-color: var(--color-green);
+    text-decoration-color: var(--color-label);
     text-decoration-thickness: 1.5px;
     text-underline-offset: 3px;
   }
   a:hover {
-    color: var(--color-green);
+    color: var(--color-label);
   }
 }
 

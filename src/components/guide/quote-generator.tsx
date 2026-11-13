@@ -14,7 +14,7 @@ const randomItem = <T,>(items: T[]) => items[Math.floor(Math.random() * items.le
 
 export function QuoteGenerator() {
   const [filter, setFilter] = useState<Filter>("All");
-  const [theme, setTheme] = useState<Theme>("lime");
+  const [theme, setTheme] = useState<Theme>("light");
   const [current, setCurrent] = useState(0);
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
@@ -71,14 +71,14 @@ export function QuoteGenerator() {
           ))}
         </div>
         <div className="qg-swatches" role="group" aria-label="Card color">
-          {(["lime", "ink"] as const).map((t) => (
+          {(["light", "ink"] as const).map((t) => (
             <button
               key={t}
               type="button"
               className={`qg-swatch ${t}`}
               aria-pressed={theme === t}
-              aria-label={t === "lime" ? "Lime card" : "Ink card"}
-              title={t === "lime" ? "Lime" : "Ink"}
+              aria-label={t === "light" ? "Light card" : "Ink card"}
+              title={t === "light" ? "Light" : "Ink"}
               onClick={() => setTheme(t)}
             />
           ))}

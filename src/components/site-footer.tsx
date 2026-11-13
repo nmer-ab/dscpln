@@ -37,7 +37,7 @@ export function SiteFooter() {
             <Link href="/" className={`inline-flex items-center gap-2.5 text-[22px] font-bold ${serif}`}>
               <span className="relative flex size-[38px] items-center justify-center rounded-[11px] bg-[#2C2C29]">
                 <MonoD className="h-auto w-5" />
-                <i className="absolute right-2 bottom-2.5 size-1.5 rounded-full bg-lime" />
+                <i className="absolute right-2 bottom-2.5 size-1.5 rounded-full bg-white" />
               </span>
               dscpln
             </Link>
@@ -59,7 +59,7 @@ export function SiteFooter() {
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h2 className="mb-3 text-[13px] font-semibold tracking-[0.5px] text-lime uppercase">{col.title}</h2>
+              <h2 className="mb-3 text-[13px] font-semibold tracking-[0.5px] text-white/55 uppercase">{col.title}</h2>
               <ul>
                 {col.links.map((link) => (
                   <li key={link.href} className="mt-[9px] text-[14px] leading-[1.4]">

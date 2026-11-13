@@ -25,7 +25,7 @@ export default function GetPage() {
       <StoreBadges size="lg" className="mt-8 justify-center" />
       <Link
         href="/"
-        className="mt-10 text-[15px] text-muted underline decoration-green decoration-[1.5px] underline-offset-[3px] transition-colors hover:text-green"
+        className="mt-10 text-[15px] text-muted underline decoration-label decoration-[1.5px] underline-offset-[3px] transition-colors hover:text-ink"
       >
         Back to dscpln.app
       </Link>

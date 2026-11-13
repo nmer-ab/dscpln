@@ -18,7 +18,7 @@ export function QuoteCard({ id, n, text, category }: { id: string; n: number; te
   async function save() {
     setBusy(true);
     try {
-      if ((await saveStory(text, category, "lime")) === "downloaded") flash("Image saved");
+      if ((await saveStory(text, category, "light")) === "downloaded") flash("Image saved");
     } catch {
       flash("Couldn't create the image");
     } finally {

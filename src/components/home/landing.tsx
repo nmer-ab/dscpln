@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element -- static line-art SVGs, sized by CSS */
 import { QRCodeSVG } from "qrcode.react";
-import { MonoD } from "@/components/mono-d";
 import { StoreBadges } from "@/components/store-badges";
 import { APP_STORE_URL } from "@/config/links";
 import { serifDisplay } from "@/lib/fonts";
+import { HeroVideo } from "./hero-video";
 import { Hub } from "./hub";
 
 function Check({ size = 14 }: { size?: number }) {
@@ -57,53 +57,24 @@ function Hero() {
     <section className={`hero ${serifDisplay.variable}`}>
       <div className="hero-top">
         <h1>
-          Meet dscpln<span className="comma">,</span>
+          Keep the <em>small promises</em> you make <em>to yourself.</em>
         </h1>
-        <p className="hero-sub">and keep the small promises you make to yourself.</p>
-        <p className="hero-small">
-          iPhone app for building daily discipline. Pick one or two small habits, keep a streak, and get a new motivation
-          or discipline line every morning on your Home Screen widget. Includes Milo, an AI coach for the days you
-          don&apos;t feel like it, plus three short reads a day. 3-day free trial on the yearly plan.
+        <p className="hero-sub">
+          An iPhone app for people who quit on a bad day, not on day one. Tiny habits, a streak worth protecting, a new
+          line every morning, and Milo, a coach for the days you don&apos;t feel like it.
         </p>
         <a className="hero-dl" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
           <svg width="15" height="18" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
             <path d="M788 340c-6 4-110 63-110 193 0 151 132 204 136 206-1 3-21 73-70 145-43 63-89 126-158 126s-87-40-167-40c-78 0-106 41-169 41s-107-58-158-130C33 797-15 667-15 543c0-198 129-303 256-303 67 0 124 44 166 44 40 0 103-47 180-47 29 0 133 3 201 103zM554 155c31-37 54-89 54-140 0-7-1-14-2-20-51 2-112 34-149 77-28 32-55 84-55 136 0 8 1 16 2 19 3 1 9 1 14 1 46 0 103-31 136-73z" />
           </svg>
-          Download
+          Download for iPhone
         </a>
-        <p className="hero-small">Free for iPhone · 3-day trial on Pro</p>
+        <p className="hero-small">Free to download · 3-day free trial on the yearly plan</p>
       </div>
-      <div
-        className="stage"
-        role="img"
-        aria-label="Milo cheering, surrounded by cards from the app: a 12-day streak, today's line, a done check, the next nudge at 07:30 and a note from Milo"
-      >
-        <div className="fc fc-2">
-          <b>12</b>
-          <span>day streak</span>
-          <div className="fc-dots"><u /><u /><u /><u /><u /><u className="o" /><u className="o" /></div>
+      <div className="lp-wrap">
+        <div className="hero-frame">
+          <HeroVideo src="/videos/hero.mp4" poster="/videos/hero-poster.jpg" />
         </div>
-        <div className="fc fc-3"><p>Start small. Start now.</p><small>TODAY&apos;S LINE</small></div>
-        <div className="fc fc-4">
-          <svg width="40" height="40" viewBox="0 0 40 40">
-            <circle cx="20" cy="20" r="18" fill="#C8E26A" />
-            <path d="M12 20.5l5.5 5.5L28.5 14" fill="none" stroke="#1F1F1D" strokeWidth={3.6} strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <div className="fc fc-5"><small>NEXT NUDGE</small><b>07:30</b></div>
-        <div className="fc fc-1">
-          <MonoD className="mono" />
-          <i />
-        </div>
-        <div className="fc fc-6"><b>MILO</b>One rep. Then decide.</div>
-        <div className="fc fc-7">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C8E26A" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-            <path d="M13.7 21a2 2 0 0 1-3.4 0" />
-          </svg>
-        </div>
-        <span className="ground" />
-        <img className="stage-milo" src="/milo-v3/milo-cheer.svg" alt="" width={188} height={292} />
       </div>
     </section>
   );
@@ -171,7 +142,7 @@ function Widgets() {
         <div className="wall" role="img" aria-label="Three dscpln widgets on a Home Screen">
           <div className="w w-poster">
             <svg className="peak" viewBox="0 0 160 160" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M-2 160 L80 34 L162 160 Z" fill="#C8E26A" stroke="#1F1F1D" strokeWidth={2} />
+              <path d="M-2 160 L80 34 L162 160 Z" fill="#D9D9D6" stroke="#1F1F1D" strokeWidth={2} />
               <path d="M80 34 L80 22 L96 27 L80 32" fill="#FFFFFF" stroke="#1F1F1D" strokeWidth={2} strokeLinejoin="round" />
             </svg>
             <span className="lbl">STREAK</span>
