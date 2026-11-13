@@ -59,6 +59,9 @@ function Hero() {
           Meet dscpln<span className="comma">,</span>
         </h1>
         <p className="hero-sub">and keep the small promises you make to yourself.</p>
+        <p className="hero-small">
+          dscpln is an iPhone app that helps you build daily discipline with habits, streaks, a daily line and an AI coach.
+        </p>
         <a className="hero-dl" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
           <svg width="15" height="18" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
             <path d="M788 340c-6 4-110 63-110 193 0 151 132 204 136 206-1 3-21 73-70 145-43 63-89 126-158 126s-87-40-167-40c-78 0-106 41-169 41s-107-58-158-130C33 797-15 667-15 543c0-198 129-303 256-303 67 0 124 44 166 44 40 0 103-47 180-47 29 0 133 3 201 103zM554 155c31-37 54-89 54-140 0-7-1-14-2-20-51 2-112 34-149 77-28 32-55 84-55 136 0 8 1 16 2 19 3 1 9 1 14 1 46 0 103-31 136-73z" />
